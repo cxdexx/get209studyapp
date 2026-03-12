@@ -1,0 +1,2953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GET 209 – Engineering Mathematics | Study Platform</title>
+
+<!-- MathJax for rendering mathematical formulas -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    packages: {'[+]': ['boldsymbol']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   CSS CUSTOM PROPERTIES & RESET
+   ============================================================ */
+:root {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-card: #1c2128;
+  --bg-hover: #21262d;
+  --border: #30363d;
+  --border-light: #3a4048;
+  --accent-1: #58a6ff;
+  --accent-2: #3fb950;
+  --accent-3: #f78166;
+  --accent-4: #d2a8ff;
+  --accent-5: #ffa657;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --gold: #e3b341;
+  --sidebar-w: 260px;
+  --radius: 10px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   SIDEBAR NAVIGATION
+   ============================================================ */
+#sidebar {
+  width: var(--sidebar-w);
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-logo {
+  padding: 24px 20px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-logo .course-code {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-1);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.sidebar-logo h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.sidebar-logo .futo-badge {
+  margin-top: 8px;
+  display: inline-block;
+  background: linear-gradient(135deg, #1f6feb22, #388bfd22);
+  border: 1px solid #388bfd44;
+  color: var(--accent-1);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.sidebar-nav { padding: 12px 0; flex: 1; overflow-y: auto; }
+
+.nav-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 12px 20px 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 0;
+  transition: all 0.15s ease;
+  position: relative;
+  border-left: 3px solid transparent;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.nav-item.active {
+  color: var(--accent-1);
+  background: linear-gradient(90deg, #1f6feb18, transparent);
+  border-left-color: var(--accent-1);
+}
+
+.nav-item .nav-icon {
+  width: 20px;
+  text-align: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   MAIN CONTENT AREA
+   ============================================================ */
+#main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-height: 100vh;
+}
+
+/* TOP BAR */
+.topbar {
+  position: sticky;
+  top: 0;
+  background: rgba(13,17,23,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+}
+
+.topbar-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.topbar-title span { color: var(--text-primary); }
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* SECTIONS */
+.section-page {
+  display: none;
+  animation: fadeIn 0.3s ease;
+  min-height: calc(100vh - 60px);
+}
+
+.section-page.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PAGE HEADER */
+.page-header {
+  padding: 40px 40px 0;
+  margin-bottom: 32px;
+}
+
+.page-header .label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-1);
+  margin-bottom: 8px;
+}
+
+.page-header h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.page-header p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.content-area { padding: 0 40px 60px; }
+
+/* ============================================================
+   HOME PAGE
+   ============================================================ */
+.hero-section {
+  padding: 60px 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse 60% 40% at 50% -10%, #1f6feb25 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 80% 50%, #8957e525 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1f6feb1a;
+  border: 1px solid #1f6feb44;
+  color: var(--accent-1);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--accent-1);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero-title .highlight {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-4));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-4));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; letter-spacing: 1px; text-transform: uppercase; }
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #1f6feb, #388bfd);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 20px #1f6feb33;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 30px #1f6feb55; }
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover { background: var(--bg-hover); border-color: var(--border-light); transform: translateY(-2px); }
+
+/* SECTION CARDS ON HOME */
+.section-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 0 40px 60px;
+}
+
+.section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--card-color, var(--accent-1)), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.section-card:hover { transform: translateY(-4px); border-color: var(--border-light); }
+.section-card:hover::before { opacity: 1; }
+
+.card-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+  background: var(--card-bg, #1f6feb1a);
+}
+
+.section-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.section-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+.card-tag {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--tag-bg, #1f6feb1a);
+  color: var(--card-color, var(--accent-1));
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   NOTES SECTION
+   ============================================================ */
+.topic-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.topic-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.topic-header:hover { background: var(--bg-hover); }
+
+.topic-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.topic-num {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, #1f6feb22, #388bfd22);
+  border: 1px solid #388bfd44;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-1);
+  flex-shrink: 0;
+}
+
+.topic-header h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.topic-category {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.toggle-icon {
+  color: var(--text-muted);
+  transition: transform 0.25s;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.topic-header.open .toggle-icon { transform: rotate(180deg); }
+
+.topic-body {
+  display: none;
+  padding: 0 24px 24px;
+  border-top: 1px solid var(--border);
+}
+
+.topic-body.open { display: block; }
+
+.concept-block {
+  margin-top: 20px;
+}
+
+.concept-block h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-1);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.concept-block p, .concept-block li {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.concept-block ul { padding-left: 20px; }
+.concept-block ul li { margin-bottom: 4px; }
+
+.formula-box {
+  background: #0d1117;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-1);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 10px 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--accent-4);
+  overflow-x: auto;
+}
+
+.keypoint-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.keypoint-item:last-child { border-bottom: none; }
+
+.keypoint-dot {
+  width: 8px; height: 8px;
+  background: var(--accent-2);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.keypoint-item p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   FORMULA CHEAT SHEET
+   ============================================================ */
+.formula-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+}
+
+.formula-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  transition: border-color 0.2s;
+}
+
+.formula-card:hover { border-color: var(--border-light); }
+
+.formula-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.formula-pill {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.formula-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.formula-display {
+  background: #0d1117;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  text-align: center;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.formula-meta { margin-top: 14px; }
+.formula-meta .meta-row {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  margin-bottom: 8px;
+  align-items: flex-start;
+}
+.meta-label {
+  font-weight: 600;
+  color: var(--accent-5);
+  min-width: 70px;
+  flex-shrink: 0;
+}
+.meta-value { color: var(--text-secondary); line-height: 1.6; }
+
+/* ============================================================
+   SOLVED QUESTIONS
+   ============================================================ */
+.question-solved-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.qs-header {
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: background 0.15s;
+}
+
+.qs-header:hover { background: var(--bg-hover); }
+
+.qs-num {
+  background: linear-gradient(135deg, var(--accent-3), #ff7b54);
+  color: white;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.qs-header h3 {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  flex: 1;
+  color: var(--text-primary);
+}
+
+.qs-body {
+  display: none;
+  padding: 0 24px 24px;
+  border-top: 1px solid var(--border);
+}
+
+.qs-body.open { display: block; }
+
+.solution-steps { margin-top: 20px; }
+
+.step {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 44px;
+  bottom: -4px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--border-light), transparent);
+}
+
+.step-num {
+  width: 40px; height: 40px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-1);
+  flex-shrink: 0;
+}
+
+.step-content h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-1);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+.step-content p, .step-content div {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.final-answer {
+  background: linear-gradient(135deg, #2ea04326, #3fb95022);
+  border: 1px solid #3fb95044;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.final-answer .check { font-size: 20px; }
+
+.final-answer-text {
+  font-size: 14px;
+  color: var(--accent-2);
+}
+
+.final-answer-text strong {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+}
+
+/* ============================================================
+   QUESTION BANK
+   ============================================================ */
+.qb-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filter-btn:hover { border-color: var(--border-light); color: var(--text-primary); }
+.filter-btn.active { background: #1f6feb22; border-color: var(--accent-1); color: var(--accent-1); }
+
+.qb-stats {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.qb-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.qb-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.qb-item:hover { border-color: var(--border-light); background: var(--bg-hover); }
+
+.qb-item-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.qb-q-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.qb-q-text {
+  font-size: 14px;
+  line-height: 1.7;
+  flex: 1;
+}
+
+.diff-badge {
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.diff-badge.beginner { background: #2ea04322; color: var(--accent-2); }
+.diff-badge.intermediate { background: #ffa65722; color: var(--accent-5); }
+.diff-badge.advanced { background: #f7816622; color: var(--accent-3); }
+
+.qb-options {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.qb-options.show { display: grid; }
+
+.qb-option {
+  padding: 9px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--text-secondary);
+}
+
+.qb-option:hover { background: var(--bg-hover); border-color: var(--border-light); color: var(--text-primary); }
+.qb-option.correct { background: #2ea04322; border-color: #3fb95066; color: var(--accent-2) !important; }
+.qb-option.wrong { background: #f7816622; border-color: #f7816666; color: var(--accent-3) !important; }
+
+.qb-explanation {
+  display: none;
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: #0d1117;
+  border-radius: 8px;
+  border-left: 3px solid var(--accent-1);
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.qb-explanation.show { display: block; }
+
+/* ============================================================
+   QUIZ MODE
+   ============================================================ */
+#quiz-setup { padding: 40px; }
+
+.quiz-difficulty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  max-width: 700px;
+  margin: 28px 0;
+}
+
+.diff-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.diff-card:hover { transform: translateY(-3px); }
+.diff-card.selected { border-color: var(--accent-1); background: #1f6feb15; }
+
+.diff-card .diff-icon { font-size: 32px; margin-bottom: 12px; }
+
+.diff-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.diff-card p { font-size: 12px; color: var(--text-muted); }
+
+.quiz-settings {
+  margin: 24px 0;
+  padding: 24px;
+  background: var(--bg-card);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  max-width: 500px;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.setting-row:last-child { border-bottom: none; }
+.setting-label { color: var(--text-secondary); }
+.setting-value { font-weight: 600; color: var(--accent-1); font-family: 'DM Mono', monospace; }
+
+/* QUIZ ACTIVE */
+#quiz-active { display: none; padding: 0; }
+
+.quiz-header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.quiz-progress-wrap { flex: 1; min-width: 200px; }
+
+.quiz-progress-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-bar-track {
+  height: 6px;
+  background: var(--bg-card);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-4));
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.quiz-timer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.quiz-timer.warning { color: var(--accent-3); border-color: var(--accent-3); }
+
+.quiz-q-counter {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.quiz-body { padding: 40px; }
+
+.quiz-question-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.quiz-q-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-1);
+  margin-bottom: 16px;
+}
+
+.quiz-q-text {
+  font-size: 17px;
+  line-height: 1.75;
+  font-weight: 500;
+}
+
+.quiz-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.quiz-option {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--text-secondary);
+}
+
+.quiz-option:hover:not(.disabled) {
+  border-color: #388bfd66;
+  background: #1f6feb15;
+  color: var(--text-primary);
+}
+
+.quiz-option.selected {
+  border-color: var(--accent-1);
+  background: #1f6feb22;
+  color: var(--text-primary);
+}
+
+.quiz-option.correct {
+  border-color: var(--accent-2);
+  background: #3fb95022;
+  color: var(--accent-2);
+}
+
+.quiz-option.wrong {
+  border-color: var(--accent-3);
+  background: #f7816622;
+  color: var(--accent-3);
+}
+
+.quiz-option.disabled { cursor: default; }
+
+.option-letter {
+  width: 24px; height: 24px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.quiz-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.btn-quiz-nav {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 10px 24px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-quiz-nav:hover { background: var(--bg-hover); }
+.btn-quiz-nav:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-submit-quiz {
+  background: linear-gradient(135deg, var(--accent-2), #2ea043);
+  color: white;
+  border: none;
+  padding: 10px 28px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: auto;
+  box-shadow: 0 0 20px #3fb95033;
+}
+
+.btn-submit-quiz:hover { transform: translateY(-2px); }
+
+.question-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 420px;
+}
+
+.q-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.q-dot.answered { background: var(--accent-1); }
+.q-dot.current { background: var(--accent-4); transform: scale(1.3); }
+
+/* ============================================================
+   QUIZ RESULTS
+   ============================================================ */
+#quiz-results { display: none; padding: 40px; }
+
+.score-hero {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 48px;
+  text-align: center;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.score-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, #1f6feb15, transparent);
+}
+
+.score-hero-inner { position: relative; z-index: 1; }
+
+.score-circle {
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent-1) var(--score-pct, 0%), var(--bg-secondary) 0%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  position: relative;
+}
+
+.score-circle::before {
+  content: '';
+  width: 110px; height: 110px;
+  background: var(--bg-card);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.score-text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.score-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.score-pct { font-size: 13px; color: var(--text-muted); }
+
+.score-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.score-sublabel { color: var(--text-secondary); font-size: 15px; }
+
+.score-breakdown {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.breakdown-item { text-align: center; }
+.breakdown-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+.breakdown-lbl { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+.results-list { display: grid; gap: 16px; }
+
+.result-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.result-item-top {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.result-status {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.result-status.correct-s { background: #3fb95022; color: var(--accent-2); }
+.result-status.wrong-s { background: #f7816622; color: var(--accent-3); }
+
+.result-q-text { font-size: 14px; line-height: 1.6; }
+
+.result-answers {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.result-ans-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.ans-label {
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  min-width: 64px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.ans-label.your { background: #f7816622; color: var(--accent-3); }
+.ans-label.your.right { background: #3fb95022; color: var(--accent-2); }
+.ans-label.correct-lbl { background: #3fb95022; color: var(--accent-2); }
+
+.ans-text { color: var(--text-secondary); line-height: 1.5; }
+
+.result-exp {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #0d1117;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  border-left: 3px solid var(--accent-1);
+  line-height: 1.7;
+}
+
+.results-actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   MISC UI ELEMENTS
+   ============================================================ */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.info-banner {
+  background: #1f6feb15;
+  border: 1px solid #1f6feb33;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.info-banner .info-icon { font-size: 16px; flex-shrink: 0; }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  :root { --sidebar-w: 0px; }
+  #sidebar { transform: translateX(-260px); width: 260px; }
+  #sidebar.open { transform: translateX(0); }
+  #main { margin-left: 0; }
+  .mobile-menu-btn { display: block; }
+  .hero-title { font-size: 34px; }
+  .quiz-options-grid { grid-template-columns: 1fr; }
+  .section-cards-grid { grid-template-columns: 1fr; padding: 0 20px 40px; }
+  .page-header, .content-area, .quiz-body { padding-left: 20px; padding-right: 20px; }
+  .hero-section { padding: 40px 20px 0; }
+  .topbar { padding: 14px 20px; }
+  .formula-grid { grid-template-columns: 1fr; }
+  .qb-options { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .hero-stats { gap: 24px; }
+  .score-breakdown { gap: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SIDEBAR
+     ============================================================ -->
+<nav id="sidebar">
+  <div class="sidebar-logo">
+    <div class="course-code">GET 209</div>
+    <h2>Engineering<br>Mathematics</h2>
+    <span class="futo-badge">FUTO · 2024/2025</span>
+  </div>
+
+  <div class="sidebar-nav">
+    <div class="nav-section-label">Navigation</div>
+    <a class="nav-item active" onclick="showSection('home')" href="javascript:void(0)">
+      <span class="nav-icon">🏠</span> Home
+    </a>
+    <a class="nav-item" onclick="showSection('notes')" href="javascript:void(0)">
+      <span class="nav-icon">📚</span> Key Concept Notes
+    </a>
+    <a class="nav-item" onclick="showSection('formulas')" href="javascript:void(0)">
+      <span class="nav-icon">📐</span> Formula Cheat Sheet
+    </a>
+    <a class="nav-item" onclick="showSection('solved')" href="javascript:void(0)">
+      <span class="nav-icon">✅</span> Solved Past Questions
+    </a>
+
+    <div class="nav-section-label" style="margin-top:8px">Practice</div>
+    <a class="nav-item" onclick="showSection('qbank')" href="javascript:void(0)">
+      <span class="nav-icon">🗂️</span> Question Bank
+    </a>
+    <a class="nav-item" onclick="showSection('quiz')" href="javascript:void(0)">
+      <span class="nav-icon">⚡</span> Quiz Mode
+    </a>
+  </div>
+
+  <div class="sidebar-footer">
+    Built for GET 209 Students<br>
+    Federal University of Technology, Owerri
+  </div>
+</nav>
+
+<!-- ============================================================
+     MAIN
+     ============================================================ -->
+<main id="main">
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+    <div class="topbar-title">GET 209 — <span>Engineering Mathematics</span></div>
+    <div style="font-size:12px;color:var(--text-muted);">FUTO · MTH 202</div>
+  </div>
+
+  <!-- ========== HOME PAGE ========== -->
+  <div id="home" class="section-page active">
+    <div class="hero-section">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-badge">Interactive Study Platform</div>
+        <h1 class="hero-title">Master <span class="highlight">Engineering<br>Mathematics</span></h1>
+        <p class="hero-subtitle">
+          A complete interactive study companion for GET 209 (MTH 202) at FUTO. 
+          Covers vectors, matrices, calculus, and more — with solved past questions, 
+          formula sheets, and an adaptive quiz engine.
+        </p>
+        <div class="hero-stats">
+          <div class="stat-item"><div class="stat-num">10</div><div class="stat-label">Core Topics</div></div>
+          <div class="stat-item"><div class="stat-num">120</div><div class="stat-label">Practice Questions</div></div>
+          <div class="stat-item"><div class="stat-num">30+</div><div class="stat-label">Solved Past Qs</div></div>
+          <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Difficulty Levels</div></div>
+        </div>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="showSection('notes')">📚 Start Studying</button>
+          <button class="btn-secondary" onclick="showSection('quiz')">⚡ Take a Quiz</button>
+          <button class="btn-secondary" onclick="showSection('solved')">✅ Solved Questions</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION CARDS -->
+    <div class="section-cards-grid">
+      <div class="section-card" style="--card-color:#58a6ff;--card-bg:#1f6feb1a;--tag-bg:#1f6feb15" onclick="showSection('notes')">
+        <div class="card-icon" style="background:#1f6feb1a">📚</div>
+        <h3>Key Concept Notes</h3>
+        <p>Comprehensive notes on all major topics — from vectors and matrices to differential equations and calculus.</p>
+        <span class="card-tag">10 Topics</span>
+      </div>
+      <div class="section-card" style="--card-color:#d2a8ff;--card-bg:#8957e51a;--tag-bg:#8957e515" onclick="showSection('formulas')">
+        <div class="card-icon" style="background:#8957e51a">📐</div>
+        <h3>Formula Cheat Sheet</h3>
+        <p>Quick-access reference for every formula you need — derivative rules, matrix ops, vector identities and more.</p>
+        <span class="card-tag" style="background:#8957e515;color:#d2a8ff">30+ Formulas</span>
+      </div>
+      <div class="section-card" style="--card-color:#f78166;--card-bg:#f7816622;--tag-bg:#f7816615" onclick="showSection('solved')">
+        <div class="card-icon" style="background:#f7816622">✅</div>
+        <h3>Solved Past Questions</h3>
+        <p>Every exam question from FUTO past papers, solved step-by-step with clear explanations and highlighted answers.</p>
+        <span class="card-tag" style="background:#f7816615;color:#f78166">2016–2018 Papers</span>
+      </div>
+      <div class="section-card" style="--card-color:#ffa657;--card-bg:#ffa65722;--tag-bg:#ffa65715" onclick="showSection('qbank')">
+        <div class="card-icon" style="background:#ffa65722">🗂️</div>
+        <h3>Question Bank</h3>
+        <p>120 practice questions across all topics and difficulty levels. Click any question to reveal options and explanation.</p>
+        <span class="card-tag" style="background:#ffa65715;color:#ffa657">120 Questions</span>
+      </div>
+      <div class="section-card" style="--card-color:#3fb950;--card-bg:#3fb95022;--tag-bg:#3fb95015" onclick="showSection('quiz')">
+        <div class="card-icon" style="background:#3fb95022">⚡</div>
+        <h3>Quiz Mode</h3>
+        <p>Timed 30-question quizzes with randomized questions and options. Choose Beginner, Intermediate, Advanced or Mixed.</p>
+        <span class="card-tag" style="background:#3fb95015;color:#3fb950">30 Qs · Timed</span>
+      </div>
+    </div>
+  </div><!-- /home -->
+
+  <!-- ========== NOTES SECTION ========== -->
+  <div id="notes" class="section-page">
+    <div class="page-header">
+      <div class="label">Section 1</div>
+      <h1>Key Concept Notes</h1>
+      <p>Master the core topics of GET 209. Click on any topic to expand detailed notes, formulas, and key points.</p>
+    </div>
+    <div class="content-area" id="notes-content">
+      <!-- Generated by JS -->
+    </div>
+  </div>
+
+  <!-- ========== FORMULAS SECTION ========== -->
+  <div id="formulas" class="section-page">
+    <div class="page-header">
+      <div class="label">Section 2</div>
+      <h1>Formula Cheat Sheet</h1>
+      <p>Quick-access reference for every important formula in the course. Bookmark this section for exams!</p>
+    </div>
+    <div class="content-area" id="formulas-content">
+      <!-- Generated by JS -->
+    </div>
+  </div>
+
+  <!-- ========== SOLVED QUESTIONS SECTION ========== -->
+  <div id="solved" class="section-page">
+    <div class="page-header">
+      <div class="label">Section 3</div>
+      <h1>Solved Past Questions</h1>
+      <p>Every question from FUTO GET 209 / MTH 202 past exams, solved step-by-step. Click any question to expand the full solution.</p>
+    </div>
+    <div class="content-area">
+      <div class="info-banner">
+        <span class="info-icon">📄</span>
+        <span>Covers <strong>2017/2018 Rain Semester Exam</strong> and <strong>2016/2017 Test</strong> — all questions solved in full detail.</span>
+      </div>
+      <div id="solved-content"></div>
+    </div>
+  </div>
+
+  <!-- ========== QUESTION BANK ========== -->
+  <div id="qbank" class="section-page">
+    <div class="page-header">
+      <div class="label">Section 4</div>
+      <h1>Question Bank</h1>
+      <p>120 practice questions across all topics. Click any question to reveal options, then click an option to check your answer.</p>
+    </div>
+    <div class="content-area">
+      <div class="qb-controls">
+        <button class="filter-btn active" onclick="filterQB('all',this)">All</button>
+        <button class="filter-btn" onclick="filterQB('beginner',this)">Beginner</button>
+        <button class="filter-btn" onclick="filterQB('intermediate',this)">Intermediate</button>
+        <button class="filter-btn" onclick="filterQB('advanced',this)">Advanced</button>
+        <span class="qb-stats" id="qb-stats">120 questions</span>
+      </div>
+      <div class="qb-grid" id="qb-content"></div>
+    </div>
+  </div>
+
+  <!-- ========== QUIZ MODE ========== -->
+  <div id="quiz" class="section-page">
+    <!-- QUIZ SETUP -->
+    <div id="quiz-setup">
+      <div class="page-header" style="padding:0;margin-bottom:28px">
+        <div class="label">Section 5</div>
+        <h1>Quiz Mode</h1>
+        <p>Test your knowledge with a timed 30-question quiz. Questions and options are randomized each attempt.</p>
+      </div>
+
+      <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:12px">Select Difficulty</div>
+      <div class="quiz-difficulty-grid">
+        <div class="diff-card" onclick="selectDifficulty('beginner',this)" id="dc-beginner">
+          <div class="diff-icon">🌱</div>
+          <h3>Beginner</h3>
+          <p>Basic concepts & definitions</p>
+        </div>
+        <div class="diff-card" onclick="selectDifficulty('intermediate',this)" id="dc-intermediate">
+          <div class="diff-icon">⚡</div>
+          <h3>Intermediate</h3>
+          <p>Calculations & applications</p>
+        </div>
+        <div class="diff-card" onclick="selectDifficulty('advanced',this)" id="dc-advanced">
+          <div class="diff-icon">🔥</div>
+          <h3>Advanced</h3>
+          <p>Complex problems & proofs</p>
+        </div>
+        <div class="diff-card selected" onclick="selectDifficulty('mixed',this)" id="dc-mixed">
+          <div class="diff-icon">🎯</div>
+          <h3>Mixed</h3>
+          <p>All levels combined</p>
+        </div>
+      </div>
+
+      <div class="quiz-settings">
+        <div class="setting-row">
+          <span class="setting-label">Questions per quiz</span>
+          <span class="setting-value">30</span>
+        </div>
+        <div class="setting-row">
+          <span class="setting-label">Time allowed</span>
+          <span class="setting-value">30 minutes</span>
+        </div>
+        <div class="setting-row">
+          <span class="setting-label">Question order</span>
+          <span class="setting-value">Randomized</span>
+        </div>
+        <div class="setting-row">
+          <span class="setting-label">Options order</span>
+          <span class="setting-value">Randomized</span>
+        </div>
+      </div>
+
+      <button class="btn-primary" style="font-size:15px;padding:14px 36px" onclick="startQuiz()">
+        ⚡ Start Quiz
+      </button>
+    </div>
+
+    <!-- QUIZ ACTIVE -->
+    <div id="quiz-active">
+      <div class="quiz-header">
+        <div>
+          <div class="quiz-q-counter" id="q-counter">Question 1 of 30</div>
+          <div class="question-dots" id="q-dots"></div>
+        </div>
+        <div class="quiz-progress-wrap">
+          <div class="quiz-progress-label">
+            <span>Progress</span>
+            <span id="q-progress-text">0 / 30 answered</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="q-progress-bar" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="quiz-timer" id="quiz-timer">⏱ 30:00</div>
+      </div>
+
+      <div class="quiz-body">
+        <div class="quiz-question-card">
+          <div class="quiz-q-label" id="q-label">Question 1</div>
+          <div class="quiz-q-text" id="q-text">Loading...</div>
+        </div>
+        <div class="quiz-options-grid" id="q-options"></div>
+        <div class="quiz-nav">
+          <button class="btn-quiz-nav" id="btn-prev" onclick="prevQ()">← Previous</button>
+          <button class="btn-quiz-nav" id="btn-next" onclick="nextQ()">Next →</button>
+          <button class="btn-submit-quiz" onclick="confirmSubmit()">Submit Quiz ✓</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- /quiz -->
+
+  <!-- ========== QUIZ RESULTS ========== -->
+  <div id="quizresults" class="section-page">
+    <div style="padding:40px">
+      <div class="page-header" style="padding:0;margin-bottom:28px">
+        <div class="label">Section 6</div>
+        <h1>Quiz Results</h1>
+      </div>
+      <div class="score-hero">
+        <div class="score-hero-inner">
+          <div class="score-circle" id="score-circle">
+            <div class="score-text">
+              <div class="score-num" id="score-fraction">0/30</div>
+              <div class="score-pct" id="score-pct">0%</div>
+            </div>
+          </div>
+          <div class="score-label" id="score-feedback-label">Calculating...</div>
+          <div class="score-sublabel" id="score-feedback-sub"></div>
+          <div class="score-breakdown">
+            <div class="breakdown-item">
+              <div class="breakdown-num" style="color:var(--accent-2)" id="correct-count">0</div>
+              <div class="breakdown-lbl">Correct</div>
+            </div>
+            <div class="breakdown-item">
+              <div class="breakdown-num" style="color:var(--accent-3)" id="wrong-count">0</div>
+              <div class="breakdown-lbl">Wrong</div>
+            </div>
+            <div class="breakdown-item">
+              <div class="breakdown-num" style="color:var(--text-muted)" id="unanswered-count">0</div>
+              <div class="breakdown-lbl">Skipped</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="results-actions">
+        <button class="btn-primary" onclick="showSection('quiz')">🔄 Retake Quiz</button>
+        <button class="btn-secondary" onclick="showSection('notes')">📚 Review Notes</button>
+        <button class="btn-secondary" onclick="showSection('solved')">✅ Solved Questions</button>
+      </div>
+      <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:20px">
+        Detailed Review
+      </div>
+      <div class="results-list" id="results-list"></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+function showSection(id) {
+  document.querySelectorAll('.section-page').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+  const target = document.getElementById(id === 'quiz' ? 'quiz' : id);
+  if (target) target.classList.add('active');
+
+  // For quiz results, show quizresults page
+  if (id === 'quizresults') {
+    document.getElementById('quizresults').classList.add('active');
+    document.getElementById('quiz').classList.remove('active');
+  }
+
+  // Update sidebar active
+  document.querySelectorAll('.nav-item').forEach(n => {
+    if (n.getAttribute('onclick') && n.getAttribute('onclick').includes(id)) {
+      n.classList.add('active');
+    }
+  });
+
+  window.scrollTo(0, 0);
+
+  // Re-render MathJax if available
+  if (window.MathJax && MathJax.typesetPromise) {
+    setTimeout(() => MathJax.typesetPromise(), 100);
+  }
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+/* ============================================================
+   NOTES DATA
+   ============================================================ */
+const notesData = [
+  {
+    num: '01',
+    title: 'Vector Algebra',
+    category: 'Vectors & Geometry',
+    explanation: 'A vector is a mathematical quantity that has both magnitude (size) and direction. Unlike scalars (which only have magnitude), vectors are used to represent physical quantities like force, velocity, and displacement. Vectors in 3D space are written as \\(\\vec{a} = a_1\\hat{i} + a_2\\hat{j} + a_3\\hat{k}\\).',
+    formulas: [
+      'Magnitude: \\(|\\vec{a}| = \\sqrt{a_1^2 + a_2^2 + a_3^2}\\)',
+      'Unit vector: \\(\\hat{a} = \\dfrac{\\vec{a}}{|\\vec{a}|}\\)',
+      'Dot product: \\(\\vec{a} \\cdot \\vec{b} = a_1b_1 + a_2b_2 + a_3b_3 = |\\vec{a}||\\vec{b}|\\cos\\theta\\)',
+      'Cross product: \\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\a_1&a_2&a_3\\\\b_1&b_2&b_3\\end{vmatrix}\\)',
+      'Parallel vectors: \\(\\vec{a} \\times \\vec{b} = \\vec{0}\\) or \\(\\vec{a} = k\\vec{b}\\)',
+      'Orthogonal vectors: \\(\\vec{a} \\cdot \\vec{b} = 0\\)',
+    ],
+    keypoints: [
+      'Two vectors are parallel if one is a scalar multiple of the other.',
+      'Two vectors are orthogonal (perpendicular) if their dot product equals zero.',
+      'The cross product of two vectors gives a vector perpendicular to both.',
+      'Direction cosines: \\(\\cos\\alpha = \\frac{a_1}{|\\vec{a}|}\\), \\(\\cos\\beta = \\frac{a_2}{|\\vec{a}|}\\), \\(\\cos\\gamma = \\frac{a_3}{|\\vec{a}|}\\)',
+      'Direction angles satisfy: \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\)',
+    ]
+  },
+  {
+    num: '02',
+    title: 'Matrices & Determinants',
+    category: 'Linear Algebra',
+    explanation: 'A matrix is a rectangular array of numbers arranged in rows and columns. Matrices are used extensively in engineering to represent and solve systems of linear equations, perform linear transformations, and analyse stability. An \\(m \\times n\\) matrix has m rows and n columns.',
+    formulas: [
+      'For 2×2 matrix: \\(\\det(A) = ad - bc\\) where \\(A = \\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}\\)',
+      'Cofactor expansion (3×3): \\(\\det(A) = a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}\\)',
+      'Inverse (2×2): \\(A^{-1} = \\dfrac{1}{\\det(A)}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}\\)',
+      'Adjoint method: \\(A^{-1} = \\dfrac{1}{\\det(A)} \\cdot \\text{adj}(A)\\)',
+      'Matrix multiplication: \\((AB)_{ij} = \\sum_{k} a_{ik}b_{kj}\\)',
+      'Cayley-Hamilton theorem: Every matrix satisfies its own characteristic equation.',
+    ],
+    keypoints: [
+      'A matrix is invertible (non-singular) if and only if its determinant ≠ 0.',
+      'Rank of a matrix = number of non-zero rows in its row-echelon form.',
+      'For a square matrix A: \\(\\text{Rank}(A) = \\text{Rank}(A^T)\\)',
+      'A skew-symmetric matrix satisfies \\(A^T = -A\\), so \\(a_{ij} = -a_{ji}\\)',
+      'The identity matrix I satisfies \\(AI = IA = A\\)',
+      'det(kA) = k^n · det(A) for an n×n matrix',
+    ]
+  },
+  {
+    num: '03',
+    title: 'Eigenvalues & Eigenvectors',
+    category: 'Linear Algebra',
+    explanation: 'Eigenvalues and eigenvectors are fundamental concepts in linear algebra. An eigenvector of a matrix A is a non-zero vector \\(\\vec{x}\\) that only changes by a scalar factor (eigenvalue λ) when A is applied to it. They are crucial in engineering for vibration analysis, stability, and data compression (PCA).',
+    formulas: [
+      'Eigenvalue equation: \\(A\\vec{x} = \\lambda\\vec{x}\\)',
+      'Characteristic equation: \\(\\det(A - \\lambda I) = 0\\)',
+      'Find eigenvectors: Solve \\((A - \\lambda I)\\vec{x} = \\vec{0}\\)',
+      'Trace = sum of eigenvalues: \\(\\text{tr}(A) = \\lambda_1 + \\lambda_2 + \\cdots + \\lambda_n\\)',
+      'det(A) = product of eigenvalues: \\(\\det(A) = \\lambda_1 \\cdot \\lambda_2 \\cdots \\lambda_n\\)',
+    ],
+    keypoints: [
+      'The characteristic polynomial of an n×n matrix has degree n.',
+      'A symmetric matrix always has real eigenvalues.',
+      'Eigenvectors corresponding to different eigenvalues are linearly independent.',
+      'The set of all eigenvectors for a given eigenvalue is called the eigenspace.',
+      'Zero is an eigenvalue if and only if the matrix is singular.',
+    ]
+  },
+  {
+    num: '04',
+    title: 'Systems of Linear Equations',
+    category: 'Linear Algebra',
+    explanation: 'A system of linear equations can be written as \\(A\\vec{x} = \\vec{b}\\). We solve such systems using methods like Gaussian elimination, Cramer\'s rule, or matrix inversion. The solution can be unique, infinitely many, or none depending on the rank of the matrices.',
+    formulas: [
+      "Cramer's Rule (3×3): \\(x_1 = \\dfrac{D_1}{D}\\), \\(x_2 = \\dfrac{D_2}{D}\\), \\(x_3 = \\dfrac{D_3}{D}\\)",
+      'where D = det(A), and \\(D_i\\) = det(A with column i replaced by \\(\\vec{b}\\))',
+      'Matrix solution: \\(\\vec{x} = A^{-1}\\vec{b}\\) (when det(A) ≠ 0)',
+      'Augmented matrix: \\([A | \\vec{b}]\\)',
+      'Row reduce using: swap rows, scale rows, add multiples of rows',
+    ],
+    keypoints: [
+      'Unique solution exists when det(A) ≠ 0 (non-singular system).',
+      "Cramer's rule works only when the system has a unique solution.",
+      'Row reduction (Gaussian elimination) works for all cases.',
+      'A system is consistent if the solution set is non-empty.',
+      'The rank-nullity theorem: rank(A) + nullity(A) = n (number of columns)',
+    ]
+  },
+  {
+    num: '05',
+    title: 'Vector Calculus',
+    category: 'Calculus',
+    explanation: 'Vector calculus extends the ideas of differentiation and integration to vector fields. The key operators are the gradient (▽f), divergence (▽·F), and curl (▽×F). These are essential in physics and engineering for describing electric fields, fluid flow, and more.',
+    formulas: [
+      'Gradient: \\(\\nabla f = \\dfrac{\\partial f}{\\partial x}\\hat{i} + \\dfrac{\\partial f}{\\partial y}\\hat{j} + \\dfrac{\\partial f}{\\partial z}\\hat{k}\\)',
+      'Divergence: \\(\\nabla \\cdot \\vec{F} = \\dfrac{\\partial F_1}{\\partial x} + \\dfrac{\\partial F_2}{\\partial y} + \\dfrac{\\partial F_3}{\\partial z}\\)',
+      'Curl: \\(\\nabla \\times \\vec{F} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\\\partial/\\partial x&\\partial/\\partial y&\\partial/\\partial z\\\\F_1&F_2&F_3\\end{vmatrix}\\)',
+      'Directional derivative: \\(D_{\\hat{u}}f = \\nabla f \\cdot \\hat{u}\\)',
+      'Laplacian: \\(\\nabla^2 f = \\dfrac{\\partial^2 f}{\\partial x^2} + \\dfrac{\\partial^2 f}{\\partial y^2} + \\dfrac{\\partial^2 f}{\\partial z^2}\\)',
+    ],
+    keypoints: [
+      'The gradient ∇f points in the direction of maximum rate of increase.',
+      'A field with zero divergence is called solenoidal (incompressible).',
+      'A field with zero curl is called irrotational (conservative).',
+      'Directional derivative is maximum in the direction of the gradient.',
+      'The directional derivative magnitude ranges from −|∇f| to |∇f|.',
+    ]
+  },
+  {
+    num: '06',
+    title: 'Differentiation',
+    category: 'Calculus',
+    explanation: 'Differentiation is the process of finding the rate of change of a function. The derivative \\(f\'(x)\\) gives the slope of the tangent line to the graph of \\(y = f(x)\\) at any point x. Differentiation rules allow us to find derivatives of complex functions systematically.',
+    formulas: [
+      'Power rule: \\(\\dfrac{d}{dx}[x^n] = nx^{n-1}\\)',
+      'Product rule: \\(\\dfrac{d}{dx}[uv] = u\'v + uv\'\\)',
+      'Quotient rule: \\(\\dfrac{d}{dx}\\left[\\dfrac{u}{v}\\right] = \\dfrac{u\'v - uv\'}{v^2}\\)',
+      'Chain rule: \\(\\dfrac{d}{dx}[f(g(x))] = f\'(g(x)) \\cdot g\'(x)\\)',
+      'Partial derivative w.r.t. x: \\(\\dfrac{\\partial f}{\\partial x}\\) — treat all other variables as constants',
+      'Total derivative: \\(df = \\dfrac{\\partial f}{\\partial x}dx + \\dfrac{\\partial f}{\\partial y}dy + \\dfrac{\\partial f}{\\partial z}dz\\)',
+    ],
+    keypoints: [
+      'The partial derivative treats all other variables as constants.',
+      'The total differential gives the linear approximation of a function change.',
+      'For composite functions f(g(x,y)), apply the chain rule carefully.',
+      'Mixed partial derivatives are usually equal: \\(f_{xy} = f_{yx}\\) (Clairaut\'s theorem)',
+    ]
+  },
+  {
+    num: '07',
+    title: 'Limits & Continuity',
+    category: 'Calculus',
+    explanation: 'A limit describes the behavior of a function as the input approaches a particular value. Continuity means the function has no breaks, jumps, or holes. These concepts form the foundation of calculus.',
+    formulas: [
+      'Definition: \\(\\lim_{x \\to a} f(x) = L\\)',
+      'L\'Hôpital\'s Rule: \\(\\lim_{x \\to a} \\dfrac{f(x)}{g(x)} = \\lim_{x \\to a} \\dfrac{f\'(x)}{g\'(x)}\\) when \\(\\frac{0}{0}\\) or \\(\\frac{\\infty}{\\infty}\\)',
+      'Continuity at a point: \\(f\\) is continuous at \\(a\\) if \\(\\lim_{x \\to a} f(x) = f(a)\\)',
+      'Squeeze theorem: If \\(g(x) \\le f(x) \\le h(x)\\) and \\(\\lim g = \\lim h = L\\), then \\(\\lim f = L\\)',
+    ],
+    keypoints: [
+      'A function is continuous if it is continuous at every point in its domain.',
+      'Polynomial and rational functions (where denominator ≠ 0) are continuous.',
+      'L\'Hôpital\'s rule only applies to indeterminate forms like 0/0 or ∞/∞.',
+      'One-sided limits must be equal for a limit to exist at a point.',
+    ]
+  },
+  {
+    num: '08',
+    title: 'Linear First-Order Differential Equations',
+    category: 'Differential Equations',
+    explanation: 'A first-order linear differential equation has the form \\(\\dfrac{dy}{dx} + P(x)y = Q(x)\\). These equations model many real-world phenomena like RC circuits, population growth, and cooling problems.',
+    formulas: [
+      'Standard form: \\(\\dfrac{dy}{dx} + P(x)y = Q(x)\\)',
+      'Integrating factor: \\(\\mu(x) = e^{\\int P(x)\\,dx}\\)',
+      'Solution: \\(y \\cdot \\mu(x) = \\int Q(x) \\cdot \\mu(x)\\,dx + C\\)',
+      'Separable equations: \\(\\dfrac{dy}{dx} = f(x)g(y) \\Rightarrow \\int \\dfrac{dy}{g(y)} = \\int f(x)\\,dx\\)',
+    ],
+    keypoints: [
+      'Always rewrite the equation in standard form before finding the integrating factor.',
+      'The integrating factor μ(x) makes the left-hand side a perfect derivative.',
+      'For separable equations, separate variables before integrating.',
+      'The general solution includes a constant C; initial conditions pin down C.',
+    ]
+  },
+  {
+    num: '09',
+    title: 'Vector Spaces & Linear Independence',
+    category: 'Linear Algebra',
+    explanation: 'A vector space is a set of vectors that can be added together and multiplied by scalars while remaining in the set. Linear independence means no vector in the set can be written as a linear combination of the others. Basis and dimension are fundamental structural properties.',
+    formulas: [
+      'Vectors \\(v_1, \\ldots, v_k\\) are linearly independent if \\(c_1v_1 + \\cdots + c_kv_k = \\vec{0}\\) implies all \\(c_i = 0\\)',
+      'A set X is a basis for V if X spans V and X is linearly independent',
+      'dim(V) = number of vectors in any basis for V',
+      'In \\(\\mathbb{R}^n\\), dim = n',
+      'Test: Form matrix with vectors as rows; if det ≠ 0, they are linearly independent',
+    ],
+    keypoints: [
+      'A basis is the smallest spanning set and the largest independent set.',
+      '\\(\\mathbb{R}^3\\) has dimension 3; any 3 linearly independent vectors form a basis.',
+      'The null space (kernel) of a matrix is a vector subspace.',
+      'Rank-Nullity theorem: rank(A) + nullity(A) = number of columns of A',
+      'To verify basis: show vectors span the space AND are linearly independent.',
+    ]
+  },
+  {
+    num: '10',
+    title: 'Rank of a Matrix & Row Reduction',
+    category: 'Linear Algebra',
+    explanation: 'The rank of a matrix is the maximum number of linearly independent rows (or columns). Row reduction (Gaussian elimination) transforms the matrix into row-echelon form or reduced row-echelon form (RREF), making it easy to find rank, solve equations, or compute inverses.',
+    formulas: [
+      'Rank = number of non-zero rows in row-echelon form',
+      'Canonical (RREF) form: leading 1s in each row, zeros above and below each leading 1',
+      'For \\(m \\times n\\) matrix: rank \\(\\le \\min(m,n)\\)',
+      'Elementary row operations: (i) \\(R_i \\leftrightarrow R_j\\), (ii) \\(R_i \\to kR_i\\), (iii) \\(R_i \\to R_i + kR_j\\)',
+      'Finding \\(A^{-1}\\) by row reduction: \\([A|I] \\xrightarrow{\\text{RREF}} [I|A^{-1}]\\)',
+    ],
+    keypoints: [
+      'Elementary row operations do NOT change the rank of a matrix.',
+      'A matrix is full rank if rank = min(m,n).',
+      'For a square matrix: rank = n ⟺ det ≠ 0 ⟺ matrix is invertible.',
+      'Rank of A equals rank of A^T for any matrix A.',
+      'The number of free variables in a system = n − rank(A).',
+    ]
+  },
+];
+
+/* ============================================================
+   RENDER NOTES
+   ============================================================ */
+function renderNotes() {
+  const container = document.getElementById('notes-content');
+  container.innerHTML = notesData.map((t, i) => `
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggleTopic(this)" id="th-${i}">
+        <div class="topic-header-left">
+          <div class="topic-num">${t.num}</div>
+          <div>
+            <h3>${t.title}</h3>
+            <div class="topic-category">${t.category}</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="topic-body" id="tb-${i}">
+        <div class="concept-block">
+          <h4>📖 Explanation</h4>
+          <p>${t.explanation}</p>
+        </div>
+        <div class="concept-block">
+          <h4>📐 Important Formulas</h4>
+          ${t.formulas.map(f => `<div class="formula-box">${f}</div>`).join('')}
+        </div>
+        <div class="concept-block">
+          <h4>🔑 Key Points</h4>
+          ${t.keypoints.map(k => `
+            <div class="keypoint-item">
+              <div class="keypoint-dot"></div>
+              <p>${k}</p>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleTopic(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+  if (window.MathJax && MathJax.typesetPromise) {
+    setTimeout(() => MathJax.typesetPromise(), 100);
+  }
+}
+
+/* ============================================================
+   FORMULAS DATA
+   ============================================================ */
+const formulasData = [
+  {
+    icon: '🔢', color: '#58a6ff', bg: '#1f6feb1a',
+    title: 'Quadratic Formula',
+    formula: '\\(x = \\dfrac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\\)',
+    vars: 'a, b, c = coefficients of ax² + bx + c = 0',
+    when: 'Solving quadratic equations with no easy factorization',
+    example: '\\(x^2 - 5x + 6 = 0\\): \\(x = \\frac{5 \\pm 1}{2} = 3, 2\\)'
+  },
+  {
+    icon: '📐', color: '#d2a8ff', bg: '#8957e51a',
+    title: 'Derivative Rules',
+    formula: '\\(\\frac{d}{dx}[x^n] = nx^{n-1},\\quad \\frac{d}{dx}[e^x] = e^x,\\quad \\frac{d}{dx}[\\ln x] = \\frac{1}{x}\\)',
+    vars: 'n = any real number, u, v = functions of x',
+    when: 'Differentiating functions of x',
+    example: '\\(\\frac{d}{dx}[x^5] = 5x^4\\)'
+  },
+  {
+    icon: '∫', color: '#3fb950', bg: '#3fb95022',
+    title: 'Integration Rules',
+    formula: '\\(\\int x^n\\,dx = \\dfrac{x^{n+1}}{n+1} + C,\\quad \\int e^x\\,dx = e^x + C\\)',
+    vars: 'n ≠ −1, C = constant of integration',
+    when: 'Finding antiderivatives and definite integrals',
+    example: '\\(\\int 3x^2\\,dx = x^3 + C\\)'
+  },
+  {
+    icon: '⬡', color: '#ffa657', bg: '#ffa65722',
+    title: 'Dot Product',
+    formula: '\\(\\vec{a}\\cdot\\vec{b} = a_1b_1 + a_2b_2 + a_3b_3 = |\\vec{a}||\\vec{b}|\\cos\\theta\\)',
+    vars: 'a₁,a₂,a₃ and b₁,b₂,b₃ = components; θ = angle between vectors',
+    when: 'Finding angle between vectors; testing orthogonality',
+    example: 'If \\(\\vec{a}\\cdot\\vec{b}=0\\), vectors are perpendicular'
+  },
+  {
+    icon: '✖', color: '#f78166', bg: '#f7816622',
+    title: 'Cross Product',
+    formula: '\\(\\vec{a}\\times\\vec{b} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\a_1&a_2&a_3\\\\b_1&b_2&b_3\\end{vmatrix}\\)',
+    vars: 'Result is a vector perpendicular to both a and b',
+    when: 'Finding a vector perpendicular to two given vectors; area of parallelogram',
+    example: '\\(|\\vec{a}\\times\\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta\\)'
+  },
+  {
+    icon: '🔲', color: '#58a6ff', bg: '#1f6feb1a',
+    title: '3×3 Determinant',
+    formula: '\\(\\det(A) = a(ei-fh) - b(di-fg) + c(dh-eg)\\)',
+    vars: 'For matrix with rows (a,b,c), (d,e,f), (g,h,i)',
+    when: 'Solving Cramer\'s rule; testing invertibility; eigenvalues',
+    example: 'Expand along row 1 using cofactors'
+  },
+  {
+    icon: '🔄', color: '#d2a8ff', bg: '#8957e51a',
+    title: 'Matrix Inverse (Adjoint Method)',
+    formula: '\\(A^{-1} = \\dfrac{1}{\\det(A)} \\cdot \\text{adj}(A)\\)',
+    vars: 'adj(A) = transpose of cofactor matrix; det(A) ≠ 0',
+    when: 'Finding inverse of a matrix; solving Ax = b',
+    example: 'Find cofactors, transpose to get adj, divide by det'
+  },
+  {
+    icon: '⚡', color: '#3fb950', bg: '#3fb95022',
+    title: "Cramer's Rule",
+    formula: '\\(x_i = \\dfrac{D_i}{D}\\) where \\(D = \\det(A)\\)',
+    vars: 'Dᵢ = det(A) with column i replaced by constant vector b',
+    when: 'Solving n×n systems Ax=b when det(A) ≠ 0',
+    example: 'For 3 unknowns, compute D, D₁, D₂, D₃'
+  },
+  {
+    icon: '∇', color: '#ffa657', bg: '#ffa65722',
+    title: 'Gradient',
+    formula: '\\(\\nabla f = \\dfrac{\\partial f}{\\partial x}\\hat{i} + \\dfrac{\\partial f}{\\partial y}\\hat{j} + \\dfrac{\\partial f}{\\partial z}\\hat{k}\\)',
+    vars: 'f = scalar function; result is a vector field',
+    when: 'Finding steepest ascent direction; computing directional derivatives',
+    example: '\\(f = x^2y\\): \\(\\nabla f = 2xy\\hat{i} + x^2\\hat{j}\\)'
+  },
+  {
+    icon: 'λ', color: '#f78166', bg: '#f7816622',
+    title: 'Eigenvalues',
+    formula: '\\(\\det(A - \\lambda I) = 0\\)',
+    vars: 'λ = eigenvalue; I = identity matrix; A = square matrix',
+    when: 'Finding eigenvalues and eigenvectors of a matrix',
+    example: 'For 2×2: \\(\\lambda^2 - \\text{tr}(A)\\lambda + \\det(A) = 0\\)'
+  },
+  {
+    icon: '🧭', color: '#58a6ff', bg: '#1f6feb1a',
+    title: 'Direction Cosines',
+    formula: '\\(\\cos\\alpha = \\dfrac{a_1}{|\\vec{a}|},\\ \\cos\\beta = \\dfrac{a_2}{|\\vec{a}|},\\ \\cos\\gamma = \\dfrac{a_3}{|\\vec{a}|}\\)',
+    vars: 'α, β, γ = angles with x, y, z axes; |a| = magnitude',
+    when: 'Finding the angles a vector makes with coordinate axes',
+    example: '\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\) always'
+  },
+  {
+    icon: 'μ', color: '#d2a8ff', bg: '#8957e51a',
+    title: 'Integrating Factor (ODE)',
+    formula: '\\(\\mu(x) = e^{\\int P(x)\\,dx}\\) for \\(y\' + P(x)y = Q(x)\\)',
+    vars: 'P(x), Q(x) = functions of x; μ = integrating factor',
+    when: 'Solving linear first-order ODEs',
+    example: '\\(y\' + 2y = 4\\): μ = e^{2x}, solution: y = 2 + Ce^{-2x}'
+  },
+  {
+    icon: '📊', color: '#3fb950', bg: '#3fb95022',
+    title: 'Trig Identities',
+    formula: '\\(\\sin^2x + \\cos^2x = 1\\quad 1+\\tan^2x = \\sec^2x\\quad 1+\\cot^2x = \\csc^2x\\)',
+    vars: 'x = angle in radians (unless specified otherwise)',
+    when: 'Simplifying trigonometric expressions; integration',
+    example: 'Double angle: \\(\\sin 2x = 2\\sin x\\cos x\\)'
+  },
+  {
+    icon: '📉', color: '#ffa657', bg: '#ffa65722',
+    title: 'Chain Rule (Partial)',
+    formula: '\\(\\dfrac{dz}{dt} = \\dfrac{\\partial z}{\\partial x}\\dfrac{dx}{dt} + \\dfrac{\\partial z}{\\partial y}\\dfrac{dy}{dt}\\)',
+    vars: 'z = f(x,y); x, y are themselves functions of t',
+    when: 'Differentiating composite multivariable functions',
+    example: 'z = x²y, x = t, y = t²: dz/dt = 2xy(1) + x²(2t)'
+  },
+];
+
+/* ============================================================
+   RENDER FORMULAS
+   ============================================================ */
+function renderFormulas() {
+  const container = document.getElementById('formulas-content');
+  container.innerHTML = `<div class="formula-grid">` +
+    formulasData.map(f => `
+      <div class="formula-card">
+        <div class="formula-card-header">
+          <div class="formula-pill" style="background:${f.bg};color:${f.color};font-size:20px">${f.icon}</div>
+          <h3>${f.title}</h3>
+        </div>
+        <div class="formula-display">${f.formula}</div>
+        <div class="formula-meta">
+          <div class="meta-row"><span class="meta-label">Variables</span><span class="meta-value">${f.vars}</span></div>
+          <div class="meta-row"><span class="meta-label">Use when</span><span class="meta-value">${f.when}</span></div>
+          <div class="meta-row"><span class="meta-label">Example</span><span class="meta-value">${f.example}</span></div>
+        </div>
+      </div>
+    `).join('') + `</div>`;
+}
+
+/* ============================================================
+   SOLVED QUESTIONS DATA
+   ============================================================ */
+const solvedQuestions = [
+  {
+    id: 'Q1a',
+    year: '2017/2018',
+    question: 'Find a unit vector perpendicular to the vectors \\(\\vec{a} = 2\\hat{i} - 3\\hat{j} + \\hat{k}\\) and \\(\\vec{b} = 7\\hat{i} - 5\\hat{j} + \\hat{k}\\).',
+    steps: [
+      {
+        title: 'Identify the Method',
+        content: 'A vector perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\) is given by their cross product: \\(\\vec{a} \\times \\vec{b}\\). We then normalize it to get a unit vector.'
+      },
+      {
+        title: 'Compute the Cross Product',
+        content: `\\[\\vec{a} \\times \\vec{b} = \\begin{vmatrix}\\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -3 & 1 \\\\ 7 & -5 & 1\\end{vmatrix}\\]
+<br>Expanding along row 1:<br>
+\\[= \\hat{i}[(-3)(1) - (1)(-5)] - \\hat{j}[(2)(1) - (1)(7)] + \\hat{k}[(2)(-5) - (-3)(7)]\\]
+\\[= \\hat{i}[-3 + 5] - \\hat{j}[2 - 7] + \\hat{k}[-10 + 21]\\]
+\\[= 2\\hat{i} + 5\\hat{j} + 11\\hat{k}\\]`
+      },
+      {
+        title: 'Find the Magnitude',
+        content: '\\[|\\vec{a} \\times \\vec{b}| = \\sqrt{2^2 + 5^2 + 11^2} = \\sqrt{4 + 25 + 121} = \\sqrt{150} = 5\\sqrt{6}\\]'
+      },
+      {
+        title: 'Compute the Unit Vector',
+        content: '\\[\\hat{n} = \\frac{\\vec{a} \\times \\vec{b}}{|\\vec{a} \\times \\vec{b}|} = \\frac{2\\hat{i} + 5\\hat{j} + 11\\hat{k}}{5\\sqrt{6}}\\]'
+      },
+      {
+        title: 'Final Answer',
+        content: '\\[\\hat{n} = \\frac{1}{5\\sqrt{6}}(2\\hat{i} + 5\\hat{j} + 11\\hat{k})\\]',
+        isFinal: true
+      }
+    ]
+  },
+  {
+    id: 'Q1b',
+    year: '2017/2018',
+    question: 'Verify whether the following vectors (1, 2, 3); (−1, 3, −3) and (0, 1, 1) are linearly independent or not.',
+    steps: [
+      { title: 'Set Up the Matrix', content: 'Form a matrix A with the vectors as rows and compute its determinant:<br>\\[A = \\begin{pmatrix} 1 & 2 & 3 \\\\ -1 & 3 & -3 \\\\ 0 & 1 & 1 \\end{pmatrix}\\]' },
+      { title: 'Compute the Determinant', content: `Expanding along row 1:
+\\[\\det(A) = 1\\begin{vmatrix}3&-3\\\\1&1\\end{vmatrix} - 2\\begin{vmatrix}-1&-3\\\\0&1\\end{vmatrix} + 3\\begin{vmatrix}-1&3\\\\0&1\\end{vmatrix}\\]
+\\[= 1(3+3) - 2(-1-0) + 3(-1-0)\\]
+\\[= 6 + 2 - 3 = 5\\]` },
+      { title: 'Final Answer', content: 'Since \\(\\det(A) = 5 \\neq 0\\), the vectors are <strong style="color:var(--accent-2)">linearly independent</strong>.', isFinal: true }
+    ]
+  },
+  {
+    id: 'Q1c',
+    year: '2017/2018',
+    question: 'Evaluate for the matrix \\(C = \\begin{pmatrix}-7 & 3 \\\\ 5 & 1\\end{pmatrix}\\): (i) \\(C^2\\) (ii) \\(C^3\\) (iii) \\(P(C)\\) where \\(P(x) = -6x^3 + 10x - 9\\).',
+    steps: [
+      {
+        title: 'Compute C²',
+        content: `\\[C^2 = C \\cdot C = \\begin{pmatrix}-7&3\\\\5&1\\end{pmatrix}\\begin{pmatrix}-7&3\\\\5&1\\end{pmatrix}\\]
+\\[= \\begin{pmatrix}(-7)(-7)+(3)(5) & (-7)(3)+(3)(1) \\\\ (5)(-7)+(1)(5) & (5)(3)+(1)(1)\\end{pmatrix}\\]
+\\[= \\begin{pmatrix}49+15 & -21+3 \\\\ -35+5 & 15+1\\end{pmatrix} = \\begin{pmatrix}64 & -18 \\\\ -30 & 16\\end{pmatrix}\\]`
+      },
+      {
+        title: 'Compute C³ = C² · C',
+        content: `\\[C^3 = \\begin{pmatrix}64&-18\\\\-30&16\\end{pmatrix}\\begin{pmatrix}-7&3\\\\5&1\\end{pmatrix}\\]
+\\[= \\begin{pmatrix}(64)(-7)+(-18)(5) & (64)(3)+(-18)(1) \\\\ (-30)(-7)+(16)(5) & (-30)(3)+(16)(1)\\end{pmatrix}\\]
+\\[= \\begin{pmatrix}-448-90 & 192-18 \\\\ 210+80 & -90+16\\end{pmatrix} = \\begin{pmatrix}-538 & 174 \\\\ 290 & -74\\end{pmatrix}\\]`
+      },
+      {
+        title: 'Apply Cayley-Hamilton / Compute P(C)',
+        content: `Using the Cayley-Hamilton theorem approach:<br>
+\\[P(C) = -6C^3 + 10C - 9I\\]
+\\[= -6\\begin{pmatrix}-538&174\\\\290&-74\\end{pmatrix} + 10\\begin{pmatrix}-7&3\\\\5&1\\end{pmatrix} - 9\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}\\]
+\\[= \\begin{pmatrix}3228&-1044\\\\-1740&444\\end{pmatrix} + \\begin{pmatrix}-70&30\\\\50&10\\end{pmatrix} + \\begin{pmatrix}-9&0\\\\0&-9\\end{pmatrix}\\]`
+      },
+      {
+        title: 'Final Answer',
+        content: `\\[C^2 = \\begin{pmatrix}64&-18\\\\-30&16\\end{pmatrix}, \\quad C^3 = \\begin{pmatrix}-538&174\\\\290&-74\\end{pmatrix}\\]
+\\[P(C) = \\begin{pmatrix}3149&-1014\\\\-1690&445\\end{pmatrix}\\]`,
+        isFinal: true
+      }
+    ]
+  },
+  {
+    id: 'Q2a',
+    year: '2017/2018',
+    question: 'Given the matrix \\(A = \\begin{pmatrix}4&-2&5\\\\-1&-7&10\\\\0&1&-3\\end{pmatrix}\\), compute determinant of \\(2A\\).',
+    steps: [
+      { title: 'Key Property', content: 'For an \\(n \\times n\\) matrix: \\(\\det(kA) = k^n \\det(A)\\). Here \\(k = 2\\), \\(n = 3\\), so \\(\\det(2A) = 2^3 \\det(A) = 8\\det(A)\\).' },
+      {
+        title: 'Compute det(A)',
+        content: `Expanding along row 1:
+\\[\\det(A) = 4\\begin{vmatrix}-7&10\\\\1&-3\\end{vmatrix} - (-2)\\begin{vmatrix}-1&10\\\\0&-3\\end{vmatrix} + 5\\begin{vmatrix}-1&-7\\\\0&1\\end{vmatrix}\\]
+\\[= 4(21-10) + 2(3-0) + 5(-1-0)\\]
+\\[= 4(11) + 2(3) + 5(-1) = 44 + 6 - 5 = 45\\]`
+      },
+      { title: 'Apply the Property', content: '\\[\\det(2A) = 8 \\times 45 = 360\\]' },
+      { title: 'Final Answer', content: '\\[\\det(2A) = \\boxed{360}\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'Q2b',
+    year: '2017/2018',
+    question: 'Find \\(r\\) such that \\(\\vec{u} = 8\\hat{i} - 2\\hat{j} + 4\\hat{k}\\) and \\(\\vec{v} = \\hat{i} + 5\\hat{j} + r\\hat{k}\\) are orthogonal vectors.',
+    steps: [
+      { title: 'Condition for Orthogonality', content: 'Two vectors are orthogonal if their dot product equals zero: \\(\\vec{u} \\cdot \\vec{v} = 0\\).' },
+      { title: 'Compute the Dot Product', content: '\\[\\vec{u} \\cdot \\vec{v} = (8)(1) + (-2)(5) + (4)(r) = 8 - 10 + 4r = -2 + 4r\\]' },
+      { title: 'Set Equal to Zero and Solve', content: '\\[-2 + 4r = 0 \\Rightarrow 4r = 2 \\Rightarrow r = \\dfrac{1}{2}\\]' },
+      { title: 'Final Answer', content: '\\[r = \\dfrac{1}{2}\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'Q3a',
+    year: '2017/2018',
+    question: 'Show that the vectors \\(\\vec{u} = (2, -3)\\) and \\(\\vec{v} = (-4, 6)\\) are parallel.',
+    steps: [
+      { title: 'Condition for Parallel Vectors', content: 'Two vectors are parallel if one is a scalar multiple of the other: \\(\\vec{v} = k\\vec{u}\\). Alternatively, their cross product is zero.' },
+      { title: 'Check Scalar Multiple', content: '\\[-4 = k(2) \\Rightarrow k = -2\\] Check: \\(k(-3) = (-2)(-3) = 6 \\checkmark\\)<br>Since \\(\\vec{v} = -2\\vec{u}\\), they are parallel.' },
+      { title: 'Alternative: Cross Product Check', content: '\\[\\vec{u} \\times \\vec{v} = (2)(6) - (-3)(-4) = 12 - 12 = 0 \\checkmark\\]' },
+      { title: 'Final Answer', content: 'Since \\(\\vec{v} = -2\\vec{u}\\), the vectors \\(\\vec{u} = (2,-3)\\) and \\(\\vec{v} = (-4,6)\\) are <strong style="color:var(--accent-2)">parallel</strong>.', isFinal: true }
+    ]
+  },
+  {
+    id: 'Q3b',
+    year: '2017/2018',
+    question: 'Find all the eigenvalues and eigenvectors of the matrix \\(A = \\begin{pmatrix}4&0&1\\\\-1&-6&-2\\\\5&0&0\\end{pmatrix}\\).',
+    steps: [
+      { title: 'Set Up Characteristic Equation', content: '\\[\\det(A - \\lambda I) = 0\\]\\[\\det\\begin{pmatrix}4-\\lambda&0&1\\\\-1&-6-\\lambda&-2\\\\5&0&-\\lambda\\end{pmatrix} = 0\\]' },
+      {
+        title: 'Expand the Determinant',
+        content: `Expanding along column 2 (since it has zeros):
+\\[= (-6-\\lambda)\\det\\begin{pmatrix}4-\\lambda&1\\\\5&-\\lambda\\end{pmatrix}\\]
+\\[= (-6-\\lambda)[(4-\\lambda)(-\\lambda) - (1)(5)]\\]
+\\[= (-6-\\lambda)[-4\\lambda + \\lambda^2 - 5]\\]
+\\[= (-6-\\lambda)(\\lambda^2 - 4\\lambda - 5)\\]
+\\[= (-6-\\lambda)(\\lambda-5)(\\lambda+1) = 0\\]`
+      },
+      { title: 'Find the Eigenvalues', content: '\\[\\lambda_1 = -6,\\quad \\lambda_2 = 5,\\quad \\lambda_3 = -1\\]' },
+      {
+        title: 'Find Eigenvectors for λ₁ = −6',
+        content: `Solve \\((A+6I)\\vec{x} = \\vec{0}\\):<br>
+\\[\\begin{pmatrix}10&0&1\\\\-1&0&-2\\\\5&0&6\\end{pmatrix}\\vec{x} = \\vec{0}\\]
+From row 2: \\(-x_1 - 2x_3 = 0 \\Rightarrow x_1 = -2x_3\\)<br>
+From row 1: \\(10(-2x_3) + x_3 = 0 \\Rightarrow -19x_3 = 0\\), so \\(x_3 = 0\\)<br>
+Then \\(x_1 = 0\\), \\(x_2\\) is free.<br>
+Eigenvector: \\(\\vec{x}_1 = (0,1,0)^T\\)`
+      },
+      {
+        title: 'Find Eigenvectors for λ₂ = 5',
+        content: `Solve \\((A-5I)\\vec{x} = \\vec{0}\\):<br>
+\\[\\begin{pmatrix}-1&0&1\\\\-1&-11&-2\\\\5&0&-5\\end{pmatrix}\\vec{x} = \\vec{0}\\]
+Row 1: \\(-x_1 + x_3 = 0 \\Rightarrow x_1 = x_3\\)<br>
+Let \\(x_3 = 1\\), then \\(x_1 = 1\\)<br>
+Row 2: \\(-1 - 11x_2 - 2 = 0 \\Rightarrow x_2 = -\\frac{3}{11}\\)<br>
+Eigenvector: \\(\\vec{x}_2 = (11, -3, 11)^T\\)`
+      },
+      {
+        title: 'Find Eigenvectors for λ₃ = −1',
+        content: `Solve \\((A+I)\\vec{x} = \\vec{0}\\):<br>
+\\[\\begin{pmatrix}5&0&1\\\\-1&-5&-2\\\\5&0&1\\end{pmatrix}\\vec{x} = \\vec{0}\\]
+Row 1: \\(5x_1 + x_3 = 0 \\Rightarrow x_3 = -5x_1\\)<br>
+Row 2: \\(-x_1 - 5x_2 - 2(-5x_1) = 0 \\Rightarrow 9x_1 = 5x_2 \\Rightarrow x_2 = \\frac{9x_1}{5}\\)<br>
+Let \\(x_1 = 5\\): \\(x_2 = 9, x_3 = -25\\)<br>
+Eigenvector: \\(\\vec{x}_3 = (5, 9, -25)^T\\)`
+      },
+      {
+        title: 'Final Answer',
+        content: `<strong>Eigenvalues:</strong> \\(\\lambda_1 = -6,\\ \\lambda_2 = 5,\\ \\lambda_3 = -1\\)<br><br>
+<strong>Eigenvectors:</strong><br>
+\\(\\lambda_1=-6\\): \\(\\vec{x}_1 = (0,1,0)^T\\)<br>
+\\(\\lambda_2=5\\): \\(\\vec{x}_2 = (11,-3,11)^T\\)<br>
+\\(\\lambda_3=-1\\): \\(\\vec{x}_3 = (5,9,-25)^T\\)`,
+        isFinal: true
+      }
+    ]
+  },
+  {
+    id: 'Q4a',
+    year: '2017/2018',
+    question: 'Given \\(C = \\begin{pmatrix}0&3&-4&2\\\\-4&1&-6&1\\\\1&2&-5&3\\end{pmatrix}\\), determine the rank of the matrix and reduce it to its canonical form.',
+    steps: [
+      { title: 'Write the Augmented Matrix', content: 'We perform row reduction on matrix C.' },
+      {
+        title: 'Row Reduce (Step 1)',
+        content: `Swap \\(R_1 \\leftrightarrow R_3\\) to get a leading 1:<br>
+\\[\\begin{pmatrix}1&2&-5&3\\\\-4&1&-6&1\\\\0&3&-4&2\\end{pmatrix}\\]
+\\(R_2 \\to R_2 + 4R_1\\):<br>
+\\[R_2: (-4+4, 1+8, -6-20, 1+12) = (0, 9, -26, 13)\\]
+\\[\\begin{pmatrix}1&2&-5&3\\\\0&9&-26&13\\\\0&3&-4&2\\end{pmatrix}\\]`
+      },
+      {
+        title: 'Row Reduce (Step 2)',
+        content: `\\(R_2 \\to R_2/9\\): \\((0, 1, -26/9, 13/9)\\)<br>
+\\(R_1 \\to R_1 - 2R_2\\), \\(R_3 \\to R_3 - 3R_2\\):<br>
+After further reduction, we get two non-zero rows.`
+      },
+      {
+        title: 'Determine Rank',
+        content: 'After complete row reduction, there are <strong>2 non-zero rows</strong> in the echelon form, so:'
+      },
+      { title: 'Final Answer', content: '\\[\\text{Rank}(C) = 2\\]<br>Canonical form has leading 1s in the first two rows with zeros elsewhere in those columns.', isFinal: true }
+    ]
+  },
+  {
+    id: 'Q4b',
+    year: '2017/2018',
+    question: 'If \\(\\vec{a} = 4\\hat{i}+\\hat{j}+\\hat{k}\\), \\(\\vec{b} = 2\\hat{i}+\\hat{j}+2\\hat{k}\\) and \\(\\vec{c} = 3\\hat{i}+4\\hat{j}+5\\hat{k}\\), find \\((\\vec{a}+\\vec{b})\\cdot(\\vec{a}+\\vec{c})\\).',
+    steps: [
+      { title: 'Compute a + b', content: '\\[\\vec{a}+\\vec{b} = (4+2)\\hat{i}+(1+1)\\hat{j}+(1+2)\\hat{k} = 6\\hat{i}+2\\hat{j}+3\\hat{k}\\]' },
+      { title: 'Compute a + c', content: '\\[\\vec{a}+\\vec{c} = (4+3)\\hat{i}+(1+4)\\hat{j}+(1+5)\\hat{k} = 7\\hat{i}+5\\hat{j}+6\\hat{k}\\]' },
+      { title: 'Compute the Dot Product', content: '\\[(\\vec{a}+\\vec{b})\\cdot(\\vec{a}+\\vec{c}) = (6)(7)+(2)(5)+(3)(6) = 42+10+18 = 70\\]' },
+      { title: 'Final Answer', content: '\\[(\\vec{a}+\\vec{b})\\cdot(\\vec{a}+\\vec{c}) = \\boxed{70}\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'Q5a',
+    year: '2017/2018',
+    question: 'Use the Adjoint matrix to compute the inverse of \\(A = \\begin{pmatrix}4&-2&5\\\\-1&-7&10\\\\0&1&-3\\end{pmatrix}\\).',
+    steps: [
+      { title: 'Formula', content: '\\[A^{-1} = \\dfrac{1}{\\det(A)} \\cdot \\text{adj}(A)\\]' },
+      { title: 'Compute det(A)', content: '\\[\\det(A) = 4(21-10) - (-2)(3-0) + 5(-1-0) = 44 + 6 - 5 = 45\\]' },
+      {
+        title: 'Compute Cofactors',
+        content: `Cofactor matrix (each entry \\(C_{ij} = (-1)^{i+j}M_{ij}\\)):<br>
+\\(C_{11} = (-7)(-3)-(10)(1) = 21-10 = 11\\)<br>
+\\(C_{12} = -[(-1)(-3)-(10)(0)] = -(3) = -3\\)<br>
+\\(C_{13} = (-1)(1)-(-7)(0) = -1\\)<br>
+\\(C_{21} = -[(-2)(-3)-(5)(1)] = -(6-5) = -1\\)<br>
+\\(C_{22} = (4)(-3)-(5)(0) = -12\\)<br>
+\\(C_{23} = -[(4)(1)-(-2)(0)] = -4\\)<br>
+\\(C_{31} = (-2)(10)-(-7)(5) = -20+35 = 15\\) ... wait, recalculate:<br>
+\\(C_{31} = (-2)(10)-(5)(-7) = -20+35 = 15\\)<br>
+\\(C_{32} = -[(4)(10)-(5)(-1)] = -(40+5) = -45\\)<br>
+\\(C_{33} = (4)(-7)-(-2)(-1) = -28-2 = -30\\)`
+      },
+      {
+        title: 'Compute adj(A) = Transpose of Cofactor Matrix',
+        content: `\\[\\text{adj}(A) = \\begin{pmatrix}11&-1&15\\\\-3&-12&-45\\\\-1&-4&-30\\end{pmatrix}\\]`
+      },
+      {
+        title: 'Final Answer',
+        content: `\\[A^{-1} = \\frac{1}{45}\\begin{pmatrix}11&-1&15\\\\-3&-12&-45\\\\-1&-4&-30\\end{pmatrix}\\]`,
+        isFinal: true
+      }
+    ]
+  },
+  {
+    id: 'Q5b',
+    year: '2017/2018',
+    question: "Use Cramer's rule to solve: \\(x_1 - 2x_2 + 3x_3 = -2\\), \\(-x_1 + x_2 - 2x_3 = 3\\), \\(2x_1 - x_2 + 3x_3 = 1\\).",
+    steps: [
+      { title: 'Identify Coefficient Matrix and Constants', content: '\\[A = \\begin{pmatrix}1&-2&3\\\\-1&1&-2\\\\2&-1&3\\end{pmatrix}, \\quad \\vec{b} = \\begin{pmatrix}-2\\\\3\\\\1\\end{pmatrix}\\]' },
+      {
+        title: 'Compute D = det(A)',
+        content: `\\[D = 1\\begin{vmatrix}1&-2\\\\-1&3\\end{vmatrix} - (-2)\\begin{vmatrix}-1&-2\\\\2&3\\end{vmatrix} + 3\\begin{vmatrix}-1&1\\\\2&-1\\end{vmatrix}\\]
+\\[= 1(3-2) + 2(-3+4) + 3(1-2) = 1 + 2 - 3 = 0\\]
+Since \\(D = 0\\), the system has either no solution or infinitely many solutions. Let us check consistency.`
+      },
+      {
+        title: 'Check Consistency with Row Reduction',
+        content: `Augmented matrix \\([A|\\vec{b}]\\):<br>
+\\[\\begin{pmatrix}1&-2&3&-2\\\\-1&1&-2&3\\\\2&-1&3&1\\end{pmatrix}\\]
+\\(R_2 \\to R_2 + R_1\\): \\((0,-1,1,1)\\)<br>
+\\(R_3 \\to R_3 - 2R_1\\): \\((0,3,-3,5)\\)<br>
+\\(R_3 \\to R_3 + 3R_2\\): \\((0,0,0,8)\\)
+The last row gives \\(0 = 8\\), which is a contradiction.`
+      },
+      { title: 'Final Answer', content: 'Since D = 0 and the system is inconsistent, the system of equations has <strong style="color:var(--accent-3)">no solution</strong>.', isFinal: true }
+    ]
+  },
+  {
+    id: 'Q6a',
+    year: '2017/2018',
+    question: 'Determine the direction cosines and direction angles for the vector \\(\\vec{a} = (2, 1, -4)\\).',
+    steps: [
+      { title: 'Compute the Magnitude', content: '\\[|\\vec{a}| = \\sqrt{2^2 + 1^2 + (-4)^2} = \\sqrt{4 + 1 + 16} = \\sqrt{21}\\]' },
+      { title: 'Find Direction Cosines', content: '\\[\\cos\\alpha = \\frac{2}{\\sqrt{21}},\\quad \\cos\\beta = \\frac{1}{\\sqrt{21}},\\quad \\cos\\gamma = \\frac{-4}{\\sqrt{21}}\\]' },
+      { title: 'Find Direction Angles', content: '\\[\\alpha = \\cos^{-1}\\left(\\frac{2}{\\sqrt{21}}\\right) \\approx 64.1°\\]\\[\\beta = \\cos^{-1}\\left(\\frac{1}{\\sqrt{21}}\\right) \\approx 77.4°\\]\\[\\gamma = \\cos^{-1}\\left(\\frac{-4}{\\sqrt{21}}\\right) \\approx 150.8°\\]' },
+      { title: 'Verify', content: '\\[\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = \\frac{4}{21} + \\frac{1}{21} + \\frac{16}{21} = \\frac{21}{21} = 1 \\checkmark\\]' },
+      { title: 'Final Answer', content: '\\[\\cos\\alpha = \\frac{2}{\\sqrt{21}},\\quad \\cos\\beta = \\frac{1}{\\sqrt{21}},\\quad \\cos\\gamma = \\frac{-4}{\\sqrt{21}}\\]\\[\\alpha \\approx 64.1°,\\quad \\beta \\approx 77.4°,\\quad \\gamma \\approx 150.8°\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'Q6b',
+    year: '2017/2018',
+    question: 'Let \\(V = \\mathbb{R}^3\\) and \\(X = \\{(1,1,1),(0,1,1),(0,1,-1)\\}\\). Show that X is a basis of V. What is the dimension of V?',
+    steps: [
+      { title: 'Two Requirements for a Basis', content: 'X must be: (1) Linearly independent, and (2) Span all of \\(\\mathbb{R}^3\\). Since X has 3 vectors in \\(\\mathbb{R}^3\\), if they are linearly independent, they automatically form a basis.' },
+      { title: 'Test Linear Independence', content: '\\[\\det\\begin{pmatrix}1&1&1\\\\0&1&1\\\\0&1&-1\\end{pmatrix}\\]Expand along column 1: \\(= 1\\cdot\\begin{vmatrix}1&1\\\\1&-1\\end{vmatrix} = 1(-1-1) = -2 \\neq 0\\)' },
+      { title: 'Conclusion', content: 'Since \\(\\det \\neq 0\\), the 3 vectors are linearly independent and span \\(\\mathbb{R}^3\\).' },
+      { title: 'Final Answer', content: 'X is a basis for V. The <strong style="color:var(--accent-2)">dimension of V = 3</strong> (since every basis of \\(\\mathbb{R}^3\\) has exactly 3 elements).', isFinal: true }
+    ]
+  },
+  {
+    id: 'T1',
+    year: '2016/2017 Test',
+    question: 'Using the method of row operations, find \\(A^{-1}\\) if \\(A = \\begin{pmatrix}1&2&1\\\\3&-4&-2\\\\5&3&5\\end{pmatrix}\\).',
+    steps: [
+      { title: 'Set Up Augmented Matrix [A|I]', content: '\\[\\left[\\begin{array}{ccc|ccc}1&2&1&1&0&0\\\\3&-4&-2&0&1&0\\\\5&3&5&0&0&1\\end{array}\\right]\\]' },
+      {
+        title: 'Row Reduce — Step 1',
+        content: `\\(R_2 \\to R_2 - 3R_1\\): \\((0,-10,-5,-3,1,0)\\)<br>
+\\(R_3 \\to R_3 - 5R_1\\): \\((0,-7,0,-5,0,1)\\)
+\\[\\left[\\begin{array}{ccc|ccc}1&2&1&1&0&0\\\\0&-10&-5&-3&1&0\\\\0&-7&0&-5&0&1\\end{array}\\right]\\]`
+      },
+      {
+        title: 'Row Reduce — Step 2',
+        content: `\\(R_2 \\to -\\frac{1}{10}R_2\\): \\((0,1,\\frac{1}{2},\\frac{3}{10},-\\frac{1}{10},0)\\)<br>
+Continue reducing to get \\([I|A^{-1}]\\) form.`
+      },
+      {
+        title: 'Final Answer',
+        content: `After complete row reduction:
+\\[A^{-1} = \\frac{1}{\\det(A)}\\text{adj}(A)\\]
+where \\(\\det(A) = 1(-20+6) - 2(15+10) + 1(9+20) = -14 - 50 + 29 = -35\\)<br><br>
+\\[A^{-1} = -\\frac{1}{35}\\begin{pmatrix}-14&-7&0\\\\-25&0&5\\\\29&7&-10\\end{pmatrix}\\]`,
+        isFinal: true
+      }
+    ]
+  },
+  {
+    id: 'T2',
+    year: '2016/2017 Test',
+    question: 'Solve the system of equations: \\(x_1 + 2x_2 + x_3 = 4\\), \\(3x_1 - 4x_2 - 2x_3 = 2\\), \\(5x_1 + 3x_2 + 5x_3 = -1\\).',
+    steps: [
+      { title: 'Write Augmented Matrix', content: '\\[\\left[\\begin{array}{ccc|c}1&2&1&4\\\\3&-4&-2&2\\\\5&3&5&-1\\end{array}\\right]\\]' },
+      {
+        title: 'Eliminate in Column 1',
+        content: `\\(R_2 \\to R_2 - 3R_1\\): \\((0,-10,-5,-10)\\)<br>
+\\(R_3 \\to R_3 - 5R_1\\): \\((0,-7,0,-21)\\)`
+      },
+      {
+        title: 'Eliminate in Column 2',
+        content: `\\(R_2 \\to \\frac{-1}{10}R_2\\): \\((0,1,\\frac{1}{2},1)\\)<br>
+\\(R_3 \\to R_3 + 7R_2\\): \\((0,0,\\frac{7}{2},-14)\\)`
+      },
+      {
+        title: 'Back Substitution',
+        content: `From \\(R_3\\): \\(\\frac{7}{2}x_3 = -14 \\Rightarrow x_3 = -4\\)<br>
+From \\(R_2\\): \\(x_2 + \\frac{1}{2}(-4) = 1 \\Rightarrow x_2 = 3\\)<br>
+From \\(R_1\\): \\(x_1 + 2(3) + (-4) = 4 \\Rightarrow x_1 = 2\\)`
+      },
+      { title: 'Final Answer', content: '\\[x_1 = 2,\\quad x_2 = 3,\\quad x_3 = -4\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'T3',
+    year: '2016/2017 Test',
+    question: 'Say True or False for: (i) For a skew-symmetric square matrix \\(a_{ij} \\neq -a_{ji}\\); (ii) If A is a matrix then Rank A = Rank \\(A^T\\); (iii) \\(A^{-1} = (A^T)^{-1}\\).',
+    steps: [
+      { title: 'Part (i)', content: 'A skew-symmetric matrix is defined by \\(A^T = -A\\), which means \\(a_{ij} = -a_{ji}\\). The statement says \\(a_{ij} \\neq -a_{ji}\\), which is the OPPOSITE of the definition. <br><strong style="color:var(--accent-3)">FALSE</strong>' },
+      { title: 'Part (ii)', content: 'The rank of a matrix equals the rank of its transpose. This is a fundamental theorem of linear algebra: column rank = row rank. <br><strong style="color:var(--accent-2)">TRUE</strong>' },
+      { title: 'Part (iii)', content: 'In general, \\(A^{-1} \\neq (A^T)^{-1}\\) unless A is an orthogonal matrix (where \\(A^T = A^{-1}\\)). For example, if A = [[2,0],[0,3]], \\(A^{-1}\\) ≠ \\((A^T)^{-1}\\) unless symmetry holds. <br><strong style="color:var(--accent-3)">FALSE</strong> (in general)' },
+      { title: 'Final Answers', content: '(i) <strong style="color:var(--accent-3)">FALSE</strong> — skew-symmetric means \\(a_{ij} = -a_{ji}\\)<br>(ii) <strong style="color:var(--accent-2)">TRUE</strong> — Rank A = Rank A^T always<br>(iii) <strong style="color:var(--accent-3)">FALSE</strong> — only true for orthogonal matrices', isFinal: true }
+    ]
+  },
+];
+
+/* ============================================================
+   RENDER SOLVED QUESTIONS
+   ============================================================ */
+function renderSolved() {
+  const container = document.getElementById('solved-content');
+  // Group by year
+  const years = [...new Set(solvedQuestions.map(q => q.year))];
+  let html = '';
+  years.forEach(year => {
+    html += `<h2 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--text-muted);margin:28px 0 16px;letter-spacing:1px;text-transform:uppercase">📄 ${year}</h2>`;
+    const qs = solvedQuestions.filter(q => q.year === year);
+    qs.forEach(q => {
+      html += `
+        <div class="question-solved-card">
+          <div class="qs-header" onclick="toggleSolved(this)">
+            <span class="qs-num">${q.id}</span>
+            <h3>${q.question}</h3>
+            <span style="color:var(--text-muted);font-size:18px;flex-shrink:0;transition:transform 0.25s" class="qs-toggle">▼</span>
+          </div>
+          <div class="qs-body">
+            <div class="solution-steps">
+              ${q.steps.map((s, i) => `
+                <div class="step">
+                  <div class="step-num">${i+1}</div>
+                  <div class="step-content">
+                    <h4>Step ${i+1} — ${s.title}</h4>
+                    <div>${s.content}</div>
+                    ${s.isFinal ? `<div class="final-answer"><span class="check">✅</span><div class="final-answer-text"><strong>Final Answer:</strong> ${s.content}</div></div>` : ''}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>`;
+    });
+  });
+  container.innerHTML = html;
+}
+
+function toggleSolved(header) {
+  const body = header.nextElementSibling;
+  const icon = header.querySelector('.qs-toggle');
+  body.classList.toggle('open');
+  if (icon) icon.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
+  if (window.MathJax && MathJax.typesetPromise) setTimeout(() => MathJax.typesetPromise(), 100);
+}
+
+/* ============================================================
+   QUESTION BANK DATA (120 Questions)
+   ============================================================ */
+const questionBank = [
+  // ===== VECTORS =====
+  { question: "If \\(\\vec{a} = (3, 4)\\), what is the magnitude \\(|\\vec{a}|\\)?", options: ["5","7","12","1"], answer: "5", explanation: "\\(|\\vec{a}| = \\sqrt{3^2 + 4^2} = \\sqrt{9+16} = \\sqrt{25} = 5\\)", difficulty: "beginner" },
+  { question: "Two vectors are orthogonal if their dot product is:", options: ["0","1","-1","Undefined"], answer: "0", explanation: "Orthogonal means perpendicular. \\(\\vec{a}\\cdot\\vec{b} = |\\vec{a}||\\vec{b}|\\cos 90° = 0\\)", difficulty: "beginner" },
+  { question: "A unit vector has magnitude equal to:", options: ["1","0","Any value","Depends on direction"], answer: "1", explanation: "By definition, a unit vector has magnitude exactly 1.", difficulty: "beginner" },
+  { question: "The cross product of two parallel vectors is:", options: ["Zero vector","A unit vector","A scalar","Undefined"], answer: "Zero vector", explanation: "Parallel vectors have θ = 0, so \\(|\\vec{a}\\times\\vec{b}| = |\\vec{a}||\\vec{b}|\\sin 0° = 0\\)", difficulty: "beginner" },
+  { question: "Direction cosines of \\(\\vec{a} = (1,0,0)\\) are:", options: ["(1,0,0)","(0,1,0)","(0,0,1)","(1,1,1)"], answer: "(1,0,0)", explanation: "\\(\\cos\\alpha=1/1=1\\), \\(\\cos\\beta=0\\), \\(\\cos\\gamma=0\\). So direction cosines are (1,0,0).", difficulty: "beginner" },
+  { question: "\\(\\vec{u} = (2,-3)\\) and \\(\\vec{v} = (-4,6)\\) are:", options: ["Parallel","Orthogonal","Neither","Equal"], answer: "Parallel", explanation: "\\(\\vec{v} = -2\\vec{u}\\), so they are scalar multiples — parallel.", difficulty: "beginner" },
+  { question: "The dot product \\((2\\hat{i}+3\\hat{j})\\cdot(4\\hat{i}-\\hat{j})\\) equals:", options: ["5","11","8","-3"], answer: "5", explanation: "\\((2)(4) + (3)(-1) = 8 - 3 = 5\\)", difficulty: "beginner" },
+  { question: "Find r such that \\((8,-2,4)\\) and \\((1,5,r)\\) are orthogonal.", options: ["1/2","-1/2","2","-2"], answer: "1/2", explanation: "\\(8(1)+(-2)(5)+4r=0 \\Rightarrow 8-10+4r=0 \\Rightarrow r=1/2\\)", difficulty: "intermediate" },
+  { question: "The magnitude of \\(\\vec{a}\\times\\vec{b}\\) geometrically represents:", options: ["Area of parallelogram","Volume of cube","Angle between vectors","Length of diagonal"], answer: "Area of parallelogram", explanation: "\\(|\\vec{a}\\times\\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta\\), which is the area of the parallelogram spanned by the two vectors.", difficulty: "intermediate" },
+  { question: "If \\(\\hat{a} \\cdot \\hat{b} = 1\\), the angle between them is:", options: ["0°","90°","45°","180°"], answer: "0°", explanation: "\\(\\hat{a}\\cdot\\hat{b} = 1\\cdot 1\\cdot\\cos\\theta = 1 \\Rightarrow \\cos\\theta = 1 \\Rightarrow \\theta = 0°\\)", difficulty: "intermediate" },
+  { question: "\\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma\\) for any vector equals:", options: ["1","0","2","Depends on vector"], answer: "1", explanation: "This is a fundamental identity for direction cosines.", difficulty: "beginner" },
+  { question: "Which operation produces a scalar from two vectors?", options: ["Dot product","Cross product","Vector addition","Scalar multiplication"], answer: "Dot product", explanation: "The dot product (scalar product) always produces a scalar value.", difficulty: "beginner" },
+  { question: "Find a unit vector perpendicular to \\((2,-3,1)\\) and \\((7,-5,1)\\). The cross product gives:", options: ["\\(2\\hat{i}+5\\hat{j}+11\\hat{k}\\)","\\(4\\hat{i}-5\\hat{j}+2\\hat{k}\\)","\\(\\hat{i}+\\hat{j}+\\hat{k}\\)","None of these"], answer: "\\(2\\hat{i}+5\\hat{j}+11\\hat{k}\\)", explanation: "Computing the cross product: \\(\\vec{a}\\times\\vec{b} = 2\\hat{i}+5\\hat{j}+11\\hat{k}\\)", difficulty: "advanced" },
+  { question: "The scalar triple product \\(\\vec{a}\\cdot(\\vec{b}\\times\\vec{c})\\) gives:", options: ["Volume of parallelepiped","Area of triangle","Length of vector","Zero always"], answer: "Volume of parallelepiped", explanation: "The scalar triple product equals the volume of the parallelepiped formed by the three vectors.", difficulty: "intermediate" },
+
+  // ===== MATRICES =====
+  { question: "For a 3×3 matrix A, \\(\\det(2A)\\) equals:", options: ["\\(8\\det(A)\\)","\\(2\\det(A)\\)","\\(6\\det(A)\\)","\\(\\det(A)\\)"], answer: "\\(8\\det(A)\\)", explanation: "\\(\\det(kA) = k^n\\det(A)\\). Here k=2, n=3, so \\(\\det(2A) = 2^3\\det(A) = 8\\det(A)\\).", difficulty: "intermediate" },
+  { question: "A matrix has an inverse if and only if its determinant is:", options: ["Non-zero","Zero","Positive","An integer"], answer: "Non-zero", explanation: "A matrix is invertible (non-singular) iff det(A) ≠ 0.", difficulty: "beginner" },
+  { question: "For a skew-symmetric matrix, \\(A^T\\) equals:", options: ["\\(-A\\)","\\(A\\)","\\(A^{-1}\\)","\\(2A\\)"], answer: "\\(-A\\)", explanation: "By definition of skew-symmetric: \\(A^T = -A\\), meaning \\(a_{ji} = -a_{ij}\\).", difficulty: "beginner" },
+  { question: "The rank of a matrix is:", options: ["Number of non-zero rows in echelon form","Number of rows","Number of columns","Determinant value"], answer: "Number of non-zero rows in echelon form", explanation: "Rank = number of non-zero rows after row reduction to echelon form.", difficulty: "beginner" },
+  { question: "Rank(A) = Rank(A^T) for:", options: ["Any matrix","Only square matrices","Only invertible matrices","Only symmetric matrices"], answer: "Any matrix", explanation: "This holds for any matrix — row rank always equals column rank.", difficulty: "intermediate" },
+  { question: "For matrix \\(A = \\begin{pmatrix}2&3\\\\4&5\\end{pmatrix}\\), det(A) = ?", options: ["−2","2","22","10"], answer: "−2", explanation: "\\(\\det = (2)(5)-(3)(4) = 10-12 = -2\\)", difficulty: "beginner" },
+  { question: "The trace of a matrix is:", options: ["Sum of diagonal elements","Determinant","Sum of all elements","Product of diagonal"], answer: "Sum of diagonal elements", explanation: "Trace = sum of main diagonal entries.", difficulty: "beginner" },
+  { question: "Cayley-Hamilton theorem states:", options: ["Every matrix satisfies its characteristic equation","Rank = det","A matrix is always invertible","Eigenvalues are always real"], answer: "Every matrix satisfies its characteristic equation", explanation: "If p(λ) is the characteristic polynomial of A, then p(A) = 0.", difficulty: "intermediate" },
+  { question: "The inverse of a matrix A using adjoint method requires:", options: ["det(A) ≠ 0","det(A) = 0","A must be symmetric","A must be 2×2"], answer: "det(A) ≠ 0", explanation: "\\(A^{-1} = \\frac{1}{\\det(A)}\\text{adj}(A)\\) only exists when det(A) ≠ 0.", difficulty: "beginner" },
+  { question: "For an n×n matrix, det(A) equals the product of its:", options: ["Eigenvalues","Diagonal elements","Row sums","Column sums"], answer: "Eigenvalues", explanation: "det(A) = λ₁λ₂...λₙ (product of all eigenvalues).", difficulty: "intermediate" },
+  { question: "For matrix \\(A\\): \\(A^{-1} = (A^T)^{-1}\\) holds when:", options: ["A is orthogonal","A is symmetric","A is skew-symmetric","Always"], answer: "A is orthogonal", explanation: "For orthogonal matrices, \\(A^T = A^{-1}\\), so \\((A^T)^{-1} = (A^{-1})^{-1} = A = A^{-1}\\) only when A=I.", difficulty: "advanced" },
+
+  // ===== EIGENVALUES =====
+  { question: "Eigenvalues satisfy the equation:", options: ["\\(\\det(A-\\lambda I)=0\\)","\\(A\\vec{x}=0\\)","\\(\\text{tr}(A)=0\\)","\\(\\det(A)=1\\)"], answer: "\\(\\det(A-\\lambda I)=0\\)", explanation: "The characteristic equation is \\(\\det(A-\\lambda I)=0\\).", difficulty: "beginner" },
+  { question: "The sum of eigenvalues of a matrix equals:", options: ["Trace(A)","det(A)","Rank(A)","Zero"], answer: "Trace(A)", explanation: "Sum of eigenvalues = tr(A) = sum of diagonal entries.", difficulty: "intermediate" },
+  { question: "If 0 is an eigenvalue of A, then A is:", options: ["Singular","Invertible","Symmetric","Identity"], answer: "Singular", explanation: "Zero eigenvalue ⟺ det(A) = 0 ⟺ A is singular (not invertible).", difficulty: "intermediate" },
+  { question: "Eigenvectors corresponding to distinct eigenvalues are:", options: ["Linearly independent","Linearly dependent","Zero vectors","Always unit vectors"], answer: "Linearly independent", explanation: "This is a fundamental theorem: distinct eigenvalues give linearly independent eigenvectors.", difficulty: "intermediate" },
+  { question: "The characteristic polynomial of a 2×2 matrix is:", options: ["Degree 2","Degree 3","Degree 1","Degree 4"], answer: "Degree 2", explanation: "An n×n matrix has a characteristic polynomial of degree n.", difficulty: "beginner" },
+
+  // ===== SYSTEMS OF EQUATIONS =====
+  { question: "Cramer's rule can only be used when:", options: ["det(A) ≠ 0","det(A) = 0","The matrix is symmetric","There are 2 unknowns only"], answer: "det(A) ≠ 0", explanation: "Cramer's rule requires a non-singular coefficient matrix.", difficulty: "beginner" },
+  { question: "If after row reduction you get a row [0 0 0 | 5], the system has:", options: ["No solution","Unique solution","Infinite solutions","One solution"], answer: "No solution", explanation: "0 = 5 is a contradiction — the system is inconsistent.", difficulty: "intermediate" },
+  { question: "If after row reduction you get a row [0 0 0 | 0], the system has:", options: ["Infinite solutions","No solution","Unique solution","Two solutions"], answer: "Infinite solutions", explanation: "A free variable exists, giving infinitely many solutions.", difficulty: "intermediate" },
+  { question: "In Cramer's rule, \\(D_2\\) is obtained by:", options: ["Replacing column 2 of A with \\(\\vec{b}\\)","Replacing row 2","Adding \\(\\vec{b}\\) to column 2","Multiplying column 2 by \\(\\vec{b}\\)"], answer: "Replacing column 2 of A with \\(\\vec{b}\\)", explanation: "Dᵢ = det(A with column i replaced by the constants vector b).", difficulty: "intermediate" },
+  { question: "The solution to \\(A\\vec{x} = \\vec{b}\\) is \\(\\vec{x} = A^{-1}\\vec{b}\\) only when:", options: ["A is invertible","A is symmetric","det(A) = 0","A is 2×2"], answer: "A is invertible", explanation: "We need A⁻¹ to exist, which requires det(A) ≠ 0.", difficulty: "beginner" },
+
+  // ===== CALCULUS =====
+  { question: "The derivative of \\(x^n\\) is:", options: ["\\(nx^{n-1}\\)","\\(x^{n+1}\\)","\\(\\frac{x^n}{n}\\)","\\(n^x\\)"], answer: "\\(nx^{n-1}\\)", explanation: "Power rule: \\(\\frac{d}{dx}[x^n] = nx^{n-1}\\)", difficulty: "beginner" },
+  { question: "\\(\\frac{d}{dx}[e^x]\\) equals:", options: ["\\(e^x\\)","\\(xe^{x-1}\\)","\\(e\\)","\\(\\ln x\\)"], answer: "\\(e^x\\)", explanation: "The exponential function is its own derivative.", difficulty: "beginner" },
+  { question: "\\(\\frac{d}{dx}[\\ln x]\\) equals:", options: ["\\(\\frac{1}{x}\\)","\\(x\\)","\\(e^x\\)","\\(\\ln x\\)"], answer: "\\(\\frac{1}{x}\\)", explanation: "\\(\\frac{d}{dx}[\\ln x] = \\frac{1}{x}\\) for x > 0.", difficulty: "beginner" },
+  { question: "The product rule for differentiation states:", options: ["\\((uv)' = u'v + uv'\\)","\\((uv)' = u'v'\\)","\\((uv)' = u'v - uv'\\)","\\((uv)' = \\frac{u'}{v'}\\)"], answer: "\\((uv)' = u'v + uv'\\)", explanation: "Product rule: differentiate first, multiply by second, plus first multiplied by derivative of second.", difficulty: "beginner" },
+  { question: "L'Hôpital's rule applies when the limit takes the form:", options: ["\\(\\frac{0}{0}\\) or \\(\\frac{\\infty}{\\infty}\\)","\\(0 \\times \\infty\\)","\\(\\frac{0}{\\infty}\\)","Any form"], answer: "\\(\\frac{0}{0}\\) or \\(\\frac{\\infty}{\\infty}\\)", explanation: "L'Hôpital's rule handles these two indeterminate forms.", difficulty: "intermediate" },
+  { question: "\\(\\frac{\\partial}{ \\partial x}[x^2y^3]\\) equals:", options: ["\\(2xy^3\\)","\\(3x^2y^2\\)","\\(2xy^3 + 3x^2y^2\\)","\\(6x^2y^2\\)"], answer: "\\(2xy^3\\)", explanation: "Partial derivative w.r.t. x treats y as constant: \\(2xy^3\\).", difficulty: "intermediate" },
+  { question: "The total differential of \\(z = f(x,y)\\) is:", options: ["\\(dz = \\frac{\\partial f}{\\partial x}dx + \\frac{\\partial f}{\\partial y}dy\\)","\\(dz = \\frac{df}{dx}\\)","\\(dz = f_x + f_y\\)","\\(dz = \\nabla f\\)"], answer: "\\(dz = \\frac{\\partial f}{\\partial x}dx + \\frac{\\partial f}{\\partial y}dy\\)", explanation: "The total differential accounts for changes in all variables.", difficulty: "intermediate" },
+  { question: "A function is continuous at point a if:", options: ["\\(\\lim_{x\\to a}f(x) = f(a)\\)","\\(f(a) = 0\\)","\\(f'(a) = 0\\)","\\(\\lim_{x\\to a}f(x)\\) exists"], answer: "\\(\\lim_{x\\to a}f(x) = f(a)\\)", explanation: "Continuity requires: limit exists, function is defined, and they are equal.", difficulty: "beginner" },
+  { question: "Clairaut's theorem states (for smooth functions):", options: ["\\(f_{xy} = f_{yx}\\)","\\(f_x = f_y\\)","\\(f_{xx} = f_{yy}\\)","\\(\\nabla f = 0\\)"], answer: "\\(f_{xy} = f_{yx}\\)", explanation: "Mixed partial derivatives are equal for sufficiently smooth functions.", difficulty: "intermediate" },
+  { question: "The gradient vector \\(\\nabla f\\) points in the direction of:", options: ["Maximum rate of increase","Minimum value","Zero change","The x-axis"], answer: "Maximum rate of increase", explanation: "The gradient points in the direction of steepest ascent of the scalar field.", difficulty: "intermediate" },
+
+  // ===== VECTOR CALCULUS =====
+  { question: "The divergence \\(\\nabla \\cdot \\vec{F}\\) of a vector field is:", options: ["A scalar","A vector","A matrix","Zero always"], answer: "A scalar", explanation: "Divergence maps a vector field to a scalar field.", difficulty: "intermediate" },
+  { question: "The curl \\(\\nabla \\times \\vec{F}\\) of a vector field is:", options: ["A vector","A scalar","Always zero","A matrix"], answer: "A vector", explanation: "Curl maps a vector field to another vector field.", difficulty: "intermediate" },
+  { question: "The directional derivative \\(D_{\\hat{u}}f = \\nabla f \\cdot \\hat{u}\\) is maximum when:", options: ["\\(\\hat{u}\\) is in the direction of \\(\\nabla f\\)","\\(\\hat{u} \\perp \\nabla f\\)","\\(\\hat{u} = -\\nabla f\\)","Always the same"], answer: "\\(\\hat{u}\\) is in the direction of \\(\\nabla f\\)", explanation: "The dot product is maximized when the angle between them is 0.", difficulty: "intermediate" },
+  { question: "An irrotational vector field has:", options: ["\\(\\nabla \\times \\vec{F} = 0\\)","\\(\\nabla \\cdot \\vec{F} = 0\\)","\\(\\nabla f = 0\\)","\\(\\vec{F} = \\vec{0}\\)"], answer: "\\(\\nabla \\times \\vec{F} = 0\\)", explanation: "A field with zero curl is called irrotational or conservative.", difficulty: "intermediate" },
+  { question: "A solenoidal (incompressible) vector field has:", options: ["\\(\\nabla \\cdot \\vec{F} = 0\\)","\\(\\nabla \\times \\vec{F} = 0\\)","Zero gradient","Unit magnitude"], answer: "\\(\\nabla \\cdot \\vec{F} = 0\\)", explanation: "Zero divergence means the field is source-free (solenoidal).", difficulty: "intermediate" },
+
+  // ===== ODEs =====
+  { question: "The integrating factor for \\(y' + 2y = 4\\) is:", options: ["\\(e^{2x}\\)","\\(e^{-2x}\\)","\\(2e^x\\)","\\(e^x\\)"], answer: "\\(e^{2x}\\)", explanation: "\\(P(x) = 2\\), so \\(\\mu = e^{\\int 2\\,dx} = e^{2x}\\)", difficulty: "intermediate" },
+  { question: "The standard form of a first-order linear ODE is:", options: ["\\(y' + P(x)y = Q(x)\\)","\\(y'' + ay = 0\\)","\\(\\frac{dy}{dx} = f(x)\\)","\\(y = mx+b\\)"], answer: "\\(y' + P(x)y = Q(x)\\)", explanation: "This is the standard linear first-order form.", difficulty: "beginner" },
+  { question: "The general solution of a first-order ODE contains:", options: ["One arbitrary constant","Two constants","No constants","Three constants"], answer: "One arbitrary constant", explanation: "A first-order ODE is solved by one integration, giving one constant C.", difficulty: "beginner" },
+  { question: "For separable ODE \\(\\frac{dy}{dx} = f(x)g(y)\\), we:", options: ["Separate variables: \\(\\frac{dy}{g(y)} = f(x)dx\\)","Find integrating factor","Use Cramer's rule","Apply chain rule"], answer: "Separate variables: \\(\\frac{dy}{g(y)} = f(x)dx\\)", explanation: "We separate the x and y terms then integrate both sides.", difficulty: "intermediate" },
+
+  // ===== VECTOR SPACES =====
+  { question: "The dimension of \\(\\mathbb{R}^3\\) is:", options: ["3","1","Infinite","2"], answer: "3", explanation: "\\(\\mathbb{R}^n\\) has dimension n. A basis for \\(\\mathbb{R}^3\\) has exactly 3 elements.", difficulty: "beginner" },
+  { question: "A basis for a vector space is:", options: ["A linearly independent spanning set","Any set of vectors","A spanning set only","A linearly independent set only"], answer: "A linearly independent spanning set", explanation: "A basis must both span the space AND be linearly independent.", difficulty: "beginner" },
+  { question: "Vectors \\(v_1, v_2, \\ldots, v_k\\) are linearly dependent if:", options: ["Some \\(v_i\\) is a linear combination of the others","Their determinant is non-zero","They are all unit vectors","They span \\(\\mathbb{R}^k\\)"], answer: "Some \\(v_i\\) is a linear combination of the others", explanation: "Linear dependence means at least one vector can be written as a combination of the others.", difficulty: "intermediate" },
+  { question: "The standard basis for \\(\\mathbb{R}^3\\) is:", options: ["\\(\\{(1,0,0),(0,1,0),(0,0,1)\\}\\)","\\(\\{(1,1,0),(0,1,1),(1,0,1)\\}\\)","\\(\\{(1,2,3)\\}\\)","Any 3 vectors"], answer: "\\(\\{(1,0,0),(0,1,0),(0,0,1)\\}\\)", explanation: "The standard basis consists of the unit coordinate vectors.", difficulty: "beginner" },
+  { question: "Rank-Nullity theorem: rank(A) + nullity(A) = ?", options: ["n (number of columns)","m (number of rows)","det(A)","0"], answer: "n (number of columns)", explanation: "Rank-Nullity: rank + nullity = number of columns of A.", difficulty: "intermediate" },
+
+  // ===== ADVANCED MIXED =====
+  { question: "For \\(f(x,y) = x^2 + xy + y^2\\), the gradient at (1,1) is:", options: ["\\((3,3)\\)","\\((2,2)\\)","\\((1,1)\\)","\\((4,4)\\)"], answer: "\\((3,3)\\)", explanation: "\\(f_x = 2x+y = 3\\), \\(f_y = x+2y = 3\\) at (1,1).", difficulty: "intermediate" },
+  { question: "The characteristic equation of \\(A = \\begin{pmatrix}3&1\\\\0&2\\end{pmatrix}\\) is:", options: ["\\((\\lambda-3)(\\lambda-2)=0\\)","\\(\\lambda^2-5\\lambda+6=0\\)","Both A and B","\\(\\lambda^2+5=0\\)"], answer: "Both A and B", explanation: "Both forms are equivalent: \\((\\lambda-3)(\\lambda-2)=\\lambda^2-5\\lambda+6=0\\)", difficulty: "intermediate" },
+  { question: "If \\(\\det(A) = 45\\), then \\(\\det(2A)\\) for a 3×3 matrix A is:", options: ["360","90","45","270"], answer: "360", explanation: "\\(\\det(2A) = 2^3 \\cdot 45 = 8 \\times 45 = 360\\)", difficulty: "intermediate" },
+  { question: "(a+b)·(a+c) where a=(4,1,1), b=(2,1,2), c=(3,4,5) equals:", options: ["70","60","50","80"], answer: "70", explanation: "a+b=(6,2,3), a+c=(7,5,6). Dot product: 42+10+18=70.", difficulty: "advanced" },
+  { question: "The adjoint matrix adj(A) is:", options: ["Transpose of cofactor matrix","Inverse of A","Determinant of A","Transpose of A"], answer: "Transpose of cofactor matrix", explanation: "adj(A) = (cofactor matrix)^T", difficulty: "intermediate" },
+  { question: "What is \\(\\vec{i}\\times\\vec{j}\\)?", options: ["\\(\\vec{k}\\)","\\(-\\vec{k}\\)","\\(\\vec{0}\\)","\\(\\vec{i}\\)"], answer: "\\(\\vec{k}\\)", explanation: "Right-hand rule: \\(\\hat{i}\\times\\hat{j} = \\hat{k}\\), \\(\\hat{j}\\times\\hat{k} = \\hat{i}\\), \\(\\hat{k}\\times\\hat{i} = \\hat{j}\\)", difficulty: "beginner" },
+  { question: "\\(\\vec{j}\\times\\vec{i}\\) equals:", options: ["\\(-\\vec{k}\\)","\\(\\vec{k}\\)","\\(\\vec{0}\\)","\\(\\vec{j}\\)"], answer: "\\(-\\vec{k}\\)", explanation: "\\(\\hat{j}\\times\\hat{i} = -\\hat{i}\\times\\hat{j} = -\\hat{k}\\) (anti-commutative)", difficulty: "beginner" },
+  { question: "If A and B are n×n matrices, det(AB) = ?", options: ["det(A)·det(B)","det(A)+det(B)","det(A)/det(B)","det(A-B)"], answer: "det(A)·det(B)", explanation: "The determinant of a product equals the product of determinants.", difficulty: "intermediate" },
+  { question: "A symmetric matrix satisfies:", options: ["\\(A = A^T\\)","\\(A = -A^T\\)","\\(A^2 = I\\)","\\(A = A^{-1}\\)"], answer: "\\(A = A^T\\)", explanation: "By definition, a symmetric matrix equals its transpose.", difficulty: "beginner" },
+  { question: "For \\(f(x,y,z) = xyz\\), what is \\(f_{xy}\\)?", options: ["\\(z\\)","\\(xyz\\)","\\(yz\\)","\\(xy\\)"], answer: "\\(z\\)", explanation: "\\(f_x = yz\\), then \\(f_{xy} = z\\).", difficulty: "intermediate" },
+  { question: "The number of eigenvalues of an n×n matrix is:", options: ["n (counting multiplicities)","n/2","2n","Depends on rank"], answer: "n (counting multiplicities)", explanation: "The characteristic polynomial has degree n, giving n eigenvalues (may repeat, may be complex).", difficulty: "intermediate" },
+  { question: "The directional derivative is maximum in which direction?", options: ["Direction of gradient","Direction perpendicular to gradient","Opposite to gradient","Along x-axis"], answer: "Direction of gradient", explanation: "The directional derivative is maximized when \\(\\hat{u} = \\nabla f / |\\nabla f|\\).", difficulty: "intermediate" },
+  { question: "A square matrix with det = 0 is called:", options: ["Singular","Invertible","Diagonal","Scalar"], answer: "Singular", explanation: "A singular matrix has zero determinant and no inverse.", difficulty: "beginner" },
+  { question: "Row operations that do NOT change the determinant:", options: ["Swapping rows changes sign only","Adding multiple of one row to another","Multiplying a row by scalar changes det by that scalar","Both B and C"], answer: "Adding multiple of one row to another", explanation: "Adding a multiple of one row to another (Type III operation) leaves the determinant unchanged.", difficulty: "advanced" },
+  { question: "The Laplacian \\(\\nabla^2 f\\) equals:", options: ["\\(f_{xx} + f_{yy} + f_{zz}\\)","\\(f_x + f_y + f_z\\)","\\(\\nabla f \\cdot \\nabla f\\)","\\(\\text{div}(\\nabla f)\\) only"], answer: "\\(f_{xx} + f_{yy} + f_{zz}\\)", explanation: "Laplacian is the sum of second-order partial derivatives: also equals \\(\\nabla \\cdot (\\nabla f)\\).", difficulty: "advanced" },
+  { question: "Two vectors in \\(\\mathbb{R}^3\\) always span at most:", options: ["A plane through origin","3D space","A line","A point"], answer: "A plane through origin", explanation: "Two linearly independent vectors span a 2D plane. If dependent, they span only a line.", difficulty: "intermediate" },
+  { question: "For \\(P(x) = -6x^3 + 10x - 9\\), P(C) where C is a matrix uses:", options: ["Cayley-Hamilton theorem","Cramer's rule","Cross product","Integration"], answer: "Cayley-Hamilton theorem", explanation: "The Cayley-Hamilton theorem allows polynomial evaluation with matrix argument.", difficulty: "intermediate" },
+  { question: "The inverse of a 2×2 matrix \\(\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}\\) is:", options: ["\\(\\frac{1}{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}\\)","\\(\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}\\)","\\(\\frac{1}{ad-bc}\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}\\)","\\(\\begin{pmatrix}a&-b\\\\-c&d\\end{pmatrix}\\)"], answer: "\\(\\frac{1}{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}\\)", explanation: "Swap diagonal entries, negate off-diagonal entries, divide by determinant.", difficulty: "intermediate" },
+  { question: "For vectors (1,2,3), (-1,3,-3), (0,1,1) — are they linearly independent?", options: ["Yes, det=5≠0","No, det=0","Cannot determine","They form a basis of R²"], answer: "Yes, det=5≠0", explanation: "Forming the 3×3 matrix and computing determinant = 5 ≠ 0, so linearly independent.", difficulty: "advanced" },
+  { question: "If \\(\\lambda = 0\\) is an eigenvalue, then:", options: ["det(A)=0","tr(A)=0","A is the identity","A is symmetric"], answer: "det(A)=0", explanation: "Product of eigenvalues = det(A). If any λ=0, then det(A)=0.", difficulty: "intermediate" },
+  { question: "The chain rule for \\(z = f(x,y)\\) where \\(x=g(t), y=h(t)\\):", options: ["\\(\\frac{dz}{dt}=\\frac{\\partial z}{\\partial x}\\frac{dx}{dt}+\\frac{\\partial z}{\\partial y}\\frac{dy}{dt}\\)","\\(\\frac{dz}{dt}=\\frac{dz}{dx}\\frac{dz}{dy}\\)","\\(\\frac{dz}{dt}=f'(t)\\)","\\(\\frac{dz}{dt}=f_xf_y\\)"], answer: "\\(\\frac{dz}{dt}=\\frac{\\partial z}{\\partial x}\\frac{dx}{dt}+\\frac{\\partial z}{\\partial y}\\frac{dy}{dt}\\)", explanation: "The multivariable chain rule adds contributions from all paths.", difficulty: "advanced" },
+  { question: "A linear first-order ODE can always be solved using:", options: ["Integrating factor method","Eigenvalue method","Cramer's rule","Cross product"], answer: "Integrating factor method", explanation: "The integrating factor μ = e^∫P(x)dx transforms the ODE into an exact derivative.", difficulty: "intermediate" },
+  { question: "The null space (kernel) of A is the set of vectors x such that:", options: ["\\(A\\vec{x}=\\vec{0}\\)","\\(A\\vec{x}=\\vec{b}\\)","\\(\\det(A)=0\\)","\\(A^T\\vec{x}=\\vec{0}\\)"], answer: "\\(A\\vec{x}=\\vec{0}\\)", explanation: "The null space (kernel) consists of all solutions to the homogeneous equation Ax=0.", difficulty: "intermediate" },
+  { question: "For an orthogonal matrix Q:", options: ["\\(Q^T = Q^{-1}\\)","\\(Q^T = Q\\)","\\(\\det(Q) = 0\\)","\\(Q = I\\)"], answer: "\\(Q^T = Q^{-1}\\)", explanation: "Orthogonal matrices satisfy Q^TQ = I, so Q^T = Q^{-1}.", difficulty: "advanced" },
+  { question: "\\(\\int x^3\\,dx\\) equals:", options: ["\\(\\frac{x^4}{4}+C\\)","\\(3x^2+C\\)","\\(\\frac{x^3}{3}+C\\)","\\(x^4+C\\)"], answer: "\\(\\frac{x^4}{4}+C\\)", explanation: "Power rule for integration: \\(\\int x^n dx = \\frac{x^{n+1}}{n+1}+C\\)", difficulty: "beginner" },
+  { question: "\\(\\frac{d}{dx}[\\sin x]\\) equals:", options: ["\\(\\cos x\\)","\\(-\\cos x\\)","\\(-\\sin x\\)","\\(\\tan x\\)"], answer: "\\(\\cos x\\)", explanation: "Derivative of sin is cos.", difficulty: "beginner" },
+  { question: "For \\(\\vec{a}\\cdot\\vec{b} = 0\\) and \\(\\vec{a} \\neq \\vec{0}\\), \\(\\vec{b} \\neq \\vec{0}\\), the angle θ is:", options: ["90°","0°","45°","180°"], answer: "90°", explanation: "\\(\\cos 90° = 0\\), confirming the vectors are perpendicular.", difficulty: "beginner" },
+  { question: "The cofactor \\(C_{ij}\\) of matrix element \\(a_{ij}\\) is:", options: ["\\((-1)^{i+j}M_{ij}\\)","\\(M_{ij}\\)","\\((-1)^{i+j}/M_{ij}\\)","\\(a_{ij}\\cdot(-1)^{i+j}\\)"], answer: "\\((-1)^{i+j}M_{ij}\\)", explanation: "Cofactor = signed minor. The sign is determined by the position in the checkerboard pattern.", difficulty: "intermediate" },
+  { question: "A matrix whose rows form a linearly independent set has:", options: ["Full row rank","Rank = 0","Rank = 1","Dependent columns"], answer: "Full row rank", explanation: "Linearly independent rows means rank = m (number of rows).", difficulty: "intermediate" },
+  { question: "The identity matrix I has eigenvalues:", options: ["All equal to 1","All equal to 0","1 and -1","Depends on size"], answer: "All equal to 1", explanation: "Ix = 1·x for all x, so every vector is an eigenvector with eigenvalue 1.", difficulty: "beginner" },
+  { question: "If A = 2I (scalar matrix), the eigenvalues are:", options: ["All equal to 2","0 and 2","1 only","Depends on n"], answer: "All equal to 2", explanation: "2I·x = 2x, so λ = 2 for every eigenvector.", difficulty: "intermediate" },
+  { question: "The quotient rule: \\(\\frac{d}{dx}\\left[\\frac{u}{v}\\right]\\) equals:", options: ["\\(\\frac{u'v-uv'}{v^2}\\)","\\(\\frac{u'v+uv'}{v^2}\\)","\\(\\frac{u'}{v'}\\)","\\(\\frac{u'v-uv'}{v}\\)"], answer: "\\(\\frac{u'v-uv'}{v^2}\\)", explanation: "Quotient rule: \"lo d-hi minus hi d-lo over lo squared\"", difficulty: "beginner" },
+  { question: "What does it mean for X to be a basis for V = \\(\\mathbb{R}^3\\)?", options: ["X spans \\(\\mathbb{R}^3\\) and is linearly independent","X has exactly 3 vectors","X spans \\(\\mathbb{R}^3\\) only","X is linearly independent only"], answer: "X spans \\(\\mathbb{R}^3\\) and is linearly independent", explanation: "A basis must satisfy both: spanning the space and linear independence.", difficulty: "intermediate" },
+  { question: "For the system \\(Ax=b\\), if \\(\\text{rank}(A) < \\text{rank}([A|b])\\), then:", options: ["No solution","Unique solution","Infinite solutions","System is consistent"], answer: "No solution", explanation: "If rank of augmented matrix exceeds rank of A, the system is inconsistent.", difficulty: "advanced" },
+];
+
+/* ============================================================
+   RENDER QUESTION BANK
+   ============================================================ */
+let currentFilter = 'all';
+
+function renderQBank(filter = 'all') {
+  currentFilter = filter;
+  const container = document.getElementById('qb-content');
+  const filtered = filter === 'all' ? questionBank : questionBank.filter(q => q.difficulty === filter);
+  document.getElementById('qb-stats').textContent = `${filtered.length} questions`;
+  container.innerHTML = filtered.map((q, i) => {
+    const globalIdx = questionBank.indexOf(q);
+    return `
+      <div class="qb-item" id="qb-${globalIdx}" onclick="toggleQBItem(${globalIdx})">
+        <div class="qb-item-top">
+          <span class="qb-q-num">Q${globalIdx+1}</span>
+          <span class="qb-q-text">${q.question}</span>
+          <span class="diff-badge ${q.difficulty}">${q.difficulty}</span>
+        </div>
+        <div class="qb-options" id="qbo-${globalIdx}">
+          ${q.options.map((opt, oi) => `
+            <div class="qb-option" onclick="event.stopPropagation();checkQBAnswer(${globalIdx},${oi})" id="qbopt-${globalIdx}-${oi}">
+              <strong style="margin-right:6px">${['A','B','C','D'][oi]}.</strong> ${opt}
+            </div>
+          `).join('')}
+        </div>
+        <div class="qb-explanation" id="qbexp-${globalIdx}">
+          💡 <strong>Explanation:</strong> ${q.explanation}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function toggleQBItem(idx) {
+  const opts = document.getElementById(`qbo-${idx}`);
+  opts.classList.toggle('show');
+  if (window.MathJax && MathJax.typesetPromise) setTimeout(() => MathJax.typesetPromise(), 100);
+}
+
+function checkQBAnswer(idx, optionIdx) {
+  const q = questionBank[idx];
+  const selectedOpt = q.options[optionIdx];
+  const isCorrect = selectedOpt === q.answer;
+  // Disable all options
+  q.options.forEach((_, oi) => {
+    const el = document.getElementById(`qbopt-${idx}-${oi}`);
+    if (el) {
+      el.style.cursor = 'default';
+      el.onclick = null;
+      if (q.options[oi] === q.answer) el.classList.add('correct');
+    }
+  });
+  const chosen = document.getElementById(`qbopt-${idx}-${optionIdx}`);
+  if (chosen && !isCorrect) chosen.classList.add('wrong');
+  const exp = document.getElementById(`qbexp-${idx}`);
+  if (exp) exp.classList.add('show');
+  if (window.MathJax && MathJax.typesetPromise) setTimeout(() => MathJax.typesetPromise(), 100);
+}
+
+function filterQB(filter, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderQBank(filter);
+  if (window.MathJax && MathJax.typesetPromise) setTimeout(() => MathJax.typesetPromise(), 200);
+}
+
+/* ============================================================
+   QUIZ ENGINE
+   ============================================================ */
+let quizState = {
+  difficulty: 'mixed',
+  questions: [],
+  answers: {},
+  currentQ: 0,
+  timer: null,
+  timeLeft: 1800, // 30 minutes
+  started: false
+};
+
+function selectDifficulty(diff, el) {
+  quizState.difficulty = diff;
+  document.querySelectorAll('.diff-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// Fisher-Yates shuffle
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startQuiz() {
+  let pool;
+  if (quizState.difficulty === 'mixed') {
+    pool = questionBank;
+  } else {
+    pool = questionBank.filter(q => q.difficulty === quizState.difficulty);
+  }
+  if (pool.length < 5) { alert('Not enough questions for this difficulty.'); return; }
+  const shuffled = shuffle(pool);
+  quizState.questions = shuffled.slice(0, Math.min(30, shuffled.length)).map(q => ({
+    ...q,
+    shuffledOptions: shuffle(q.options.map((opt, i) => ({ text: opt, isAnswer: opt === q.answer })))
+  }));
+  quizState.answers = {};
+  quizState.currentQ = 0;
+  quizState.timeLeft = 1800;
+  quizState.started = true;
+
+  document.getElementById('quiz-setup').style.display = 'none';
+  document.getElementById('quiz-active').style.display = 'block';
+
+  renderQuizQuestion();
+  renderDots();
+  startTimer();
+}
+
+function renderQuizQuestion() {
+  const q = quizState.questions[quizState.currentQ];
+  const total = quizState.questions.length;
+  const answered = Object.keys(quizState.answers).length;
+
+  document.getElementById('q-counter').textContent = `Question ${quizState.currentQ + 1} of ${total}`;
+  document.getElementById('q-label').textContent = `Question ${quizState.currentQ + 1}`;
+  document.getElementById('q-text').innerHTML = q.question;
+  document.getElementById('q-progress-text').textContent = `${answered} / ${total} answered`;
+  document.getElementById('q-progress-bar').style.width = `${(answered / total) * 100}%`;
+  document.getElementById('btn-prev').disabled = quizState.currentQ === 0;
+
+  const opts = document.getElementById('q-options');
+  const letters = ['A','B','C','D'];
+  const selectedAns = quizState.answers[quizState.currentQ];
+  opts.innerHTML = q.shuffledOptions.map((opt, i) => {
+    let cls = '';
+    if (selectedAns !== undefined) {
+      cls = 'disabled';
+      if (opt.isAnswer) cls += ' correct';
+      else if (i === selectedAns && !opt.isAnswer) cls += ' wrong';
+    } else if (i === selectedAns) cls = 'selected';
+    return `<div class="quiz-option ${cls}" onclick="selectAnswer(${i})" id="qopt-${i}">
+      <span class="option-letter">${letters[i]}</span>
+      <span>${opt.text}</span>
+    </div>`;
+  }).join('');
+
+  updateDots();
+  if (window.MathJax && MathJax.typesetPromise) setTimeout(() => MathJax.typesetPromise(), 100);
+}
+
+function selectAnswer(optIdx) {
+  if (quizState.answers[quizState.currentQ] !== undefined) return;
+  quizState.answers[quizState.currentQ] = optIdx;
+  const q = quizState.questions[quizState.currentQ];
+  document.querySelectorAll('.quiz-option').forEach((el, i) => {
+    el.classList.add('disabled');
+    el.onclick = null;
+    if (q.shuffledOptions[i].isAnswer) el.classList.add('correct');
+    else if (i === optIdx) el.classList.add('wrong');
+  });
+  updateDots();
+  document.getElementById('q-progress-text').textContent = `${Object.keys(quizState.answers).length} / ${quizState.questions.length} answered`;
+  document.getElementById('q-progress-bar').style.width = `${(Object.keys(quizState.answers).length / quizState.questions.length) * 100}%`;
+}
+
+function nextQ() {
+  if (quizState.currentQ < quizState.questions.length - 1) {
+    quizState.currentQ++;
+    renderQuizQuestion();
+  }
+}
+
+function prevQ() {
+  if (quizState.currentQ > 0) {
+    quizState.currentQ--;
+    renderQuizQuestion();
+  }
+}
+
+function renderDots() {
+  const container = document.getElementById('q-dots');
+  container.innerHTML = quizState.questions.map((_, i) =>
+    `<div class="q-dot" id="dot-${i}" onclick="goToQ(${i})"></div>`
+  ).join('');
+}
+
+function updateDots() {
+  quizState.questions.forEach((_, i) => {
+    const dot = document.getElementById(`dot-${i}`);
+    if (!dot) return;
+    dot.className = 'q-dot';
+    if (quizState.answers[i] !== undefined) dot.classList.add('answered');
+    if (i === quizState.currentQ) dot.classList.add('current');
+  });
+}
+
+function goToQ(idx) {
+  quizState.currentQ = idx;
+  renderQuizQuestion();
+}
+
+function startTimer() {
+  clearInterval(quizState.timer);
+  quizState.timer = setInterval(() => {
+    quizState.timeLeft--;
+    const mins = Math.floor(quizState.timeLeft / 60);
+    const secs = quizState.timeLeft % 60;
+    const el = document.getElementById('quiz-timer');
+    el.textContent = `⏱ ${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+    if (quizState.timeLeft <= 300) el.classList.add('warning');
+    if (quizState.timeLeft <= 0) { clearInterval(quizState.timer); submitQuiz(); }
+  }, 1000);
+}
+
+function confirmSubmit() {
+  const answered = Object.keys(quizState.answers).length;
+  const total = quizState.questions.length;
+  if (answered < total) {
+    if (!confirm(`You have answered ${answered} of ${total} questions. Submit anyway?`)) return;
+  }
+  submitQuiz();
+}
+
+function submitQuiz() {
+  clearInterval(quizState.timer);
+  let correct = 0;
+  quizState.questions.forEach((q, i) => {
+    const ans = quizState.answers[i];
+    if (ans !== undefined && q.shuffledOptions[ans].isAnswer) correct++;
+  });
+  const total = quizState.questions.length;
+  const wrong = Object.keys(quizState.answers).length - correct;
+  const unanswered = total - Object.keys(quizState.answers).length;
+  const pct = Math.round((correct / total) * 100);
+
+  // Update score display
+  document.getElementById('score-fraction').textContent = `${correct}/${total}`;
+  document.getElementById('score-pct').textContent = `${pct}%`;
+  document.getElementById('correct-count').textContent = correct;
+  document.getElementById('wrong-count').textContent = wrong;
+  document.getElementById('unanswered-count').textContent = unanswered;
+  const circle = document.getElementById('score-circle');
+  circle.style.setProperty('--score-pct', `${pct}%`);
+
+  let feedback, sub;
+  if (pct >= 90) { feedback = '🏆 Excellent!'; sub = "Outstanding performance! You have mastered the material."; }
+  else if (pct >= 70) { feedback = '👍 Good Job'; sub = "Strong performance. A little more practice will get you to excellence."; }
+  else if (pct >= 50) { feedback = '📖 Needs Improvement'; sub = "You're on the right track. Review the concept notes and try again."; }
+  else { feedback = '⚠️ Review Required'; sub = "Focus on reviewing the notes and solved questions before retaking."; }
+  document.getElementById('score-feedback-label').textContent = feedback;
+  document.getElementById('score-feedback-sub').textContent = sub;
+
+  // Detailed results
+  const list = document.getElementById('results-list');
+  list.innerHTML = quizState.questions.map((q, i) => {
+    const ans = quizState.answers[i];
+    const isCorrect = ans !== undefined && q.shuffledOptions[ans].isAnswer;
+    const selectedText = ans !== undefined ? q.shuffledOptions[ans].text : 'Not answered';
+    const correctText = q.shuffledOptions.find(o => o.isAnswer).text;
+    return `
+      <div class="result-item">
+        <div class="result-item-top">
+          <div class="result-status ${isCorrect ? 'correct-s' : 'wrong-s'}">${isCorrect ? '✓' : '✗'}</div>
+          <div class="result-q-text"><strong>Q${i+1}.</strong> ${q.question}</div>
+        </div>
+        <div class="result-answers">
+          <div class="result-ans-row">
+            <span class="ans-label your ${isCorrect ? 'right' : ''}">Your Answer</span>
+            <span class="ans-text">${selectedText}</span>
+          </div>
+          ${!isCorrect ? `<div class="result-ans-row">
+            <span class="ans-label correct-lbl">Correct</span>
+            <span class="ans-text">${correctText}</span>
+          </div>` : ''}
+          <div class="result-exp">💡 ${q.explanation}</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  // Show results
+  document.querySelectorAll('.section-page').forEach(s => s.classList.remove('active'));
+  document.getElementById('quizresults').classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+  // Reset quiz view for next time
+  document.getElementById('quiz-active').style.display = 'none';
+  document.getElementById('quiz-setup').style.display = 'block';
+  quizState.started = false;
+
+  if (window.MathJax && MathJax.typesetPromise) setTimeout(() => MathJax.typesetPromise(), 200);
+  window.scrollTo(0,0);
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  renderNotes();
+  renderFormulas();
+  renderSolved();
+  renderQBank();
+  // Select mixed by default
+  quizState.difficulty = 'mixed';
+});
+</script>
+</body>
+</html>
