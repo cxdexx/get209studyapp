@@ -1414,6 +1414,13 @@ body {
     </a>
   </div>
 
+    <div class="nav-section-label" style="margin-top:8px">Bonus Course</div>
+    <a class="nav-item" onclick="showSection('pee201')" href="javascript:void(0)">
+      <span class="nav-icon">🛢️</span> PEE 201 Geology
+    </a>
+
+  </div>
+
   <div class="sidebar-footer">
     Built for GET 209 Students<br>
     Federal University of Technology, Owerri
@@ -1444,9 +1451,9 @@ body {
           formula sheets, and an adaptive quiz engine.
         </p>
         <div class="hero-stats">
-          <div class="stat-item"><div class="stat-num">10</div><div class="stat-label">Core Topics</div></div>
-          <div class="stat-item"><div class="stat-num">120</div><div class="stat-label">Practice Questions</div></div>
-          <div class="stat-item"><div class="stat-num">30+</div><div class="stat-label">Solved Past Qs</div></div>
+          <div class="stat-item"><div class="stat-num">15</div><div class="stat-label">Core Topics</div></div>
+          <div class="stat-item"><div class="stat-num">140+</div><div class="stat-label">Practice Questions</div></div>
+          <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">Solved Past Qs</div></div>
           <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Difficulty Levels</div></div>
         </div>
         <div class="hero-actions">
@@ -1462,8 +1469,8 @@ body {
       <div class="section-card" style="--card-color:#58a6ff;--card-bg:#1f6feb1a;--tag-bg:#1f6feb15" onclick="showSection('notes')">
         <div class="card-icon" style="background:#1f6feb1a">📚</div>
         <h3>Key Concept Notes</h3>
-        <p>Comprehensive notes on all major topics — from vectors and matrices to differential equations and calculus.</p>
-        <span class="card-tag">10 Topics</span>
+        <p>Comprehensive notes on all major topics — vectors, matrices, calculus, ODEs, logarithms, coordinate geometry and more.</p>
+        <span class="card-tag">15 Topics</span>
       </div>
       <div class="section-card" style="--card-color:#d2a8ff;--card-bg:#8957e51a;--tag-bg:#8957e515" onclick="showSection('formulas')">
         <div class="card-icon" style="background:#8957e51a">📐</div>
@@ -1474,20 +1481,26 @@ body {
       <div class="section-card" style="--card-color:#f78166;--card-bg:#f7816622;--tag-bg:#f7816615" onclick="showSection('solved')">
         <div class="card-icon" style="background:#f7816622">✅</div>
         <h3>Solved Past Questions</h3>
-        <p>Every exam question from FUTO past papers, solved step-by-step with clear explanations and highlighted answers.</p>
-        <span class="card-tag" style="background:#f7816615;color:#f78166">2016–2018 Papers</span>
+        <p>Every exam question from FUTO past papers + all revision notes solved step-by-step with explanations.</p>
+        <span class="card-tag" style="background:#f7816615;color:#f78166">50+ Solutions</span>
       </div>
       <div class="section-card" style="--card-color:#ffa657;--card-bg:#ffa65722;--tag-bg:#ffa65715" onclick="showSection('qbank')">
         <div class="card-icon" style="background:#ffa65722">🗂️</div>
         <h3>Question Bank</h3>
-        <p>120 practice questions across all topics and difficulty levels. Click any question to reveal options and explanation.</p>
-        <span class="card-tag" style="background:#ffa65715;color:#ffa657">120 Questions</span>
+        <p>140+ practice questions across all topics and difficulty levels. Click any question to reveal options and explanation.</p>
+        <span class="card-tag" style="background:#ffa65715;color:#ffa657">140+ Questions</span>
       </div>
       <div class="section-card" style="--card-color:#3fb950;--card-bg:#3fb95022;--tag-bg:#3fb95015" onclick="showSection('quiz')">
         <div class="card-icon" style="background:#3fb95022">⚡</div>
         <h3>Quiz Mode</h3>
         <p>Timed 30-question quizzes with randomized questions and options. Choose Beginner, Intermediate, Advanced or Mixed.</p>
         <span class="card-tag" style="background:#3fb95015;color:#3fb950">30 Qs · Timed</span>
+      </div>
+      <div class="section-card" style="--card-color:#ffa657;--card-bg:#ffa65715;--tag-bg:#ffa65710" onclick="showSection('pee201')">
+        <div class="card-icon" style="background:#ffa65718">🛢️</div>
+        <h3>PEE 201 – Petroleum Geology</h3>
+        <p>FUTO 2024/2025 Petroleum Geology exam paper (PEE 201) with fully detailed answers to all 6 questions.</p>
+        <span class="card-tag" style="background:#ffa65715;color:#ffa657">6 Exam Questions</span>
       </div>
     </div>
   </div><!-- /home -->
@@ -1526,7 +1539,7 @@ body {
     <div class="content-area">
       <div class="info-banner">
         <span class="info-icon">📄</span>
-        <span>Covers <strong>2017/2018 Rain Semester Exam</strong> and <strong>2016/2017 Test</strong> — all questions solved in full detail.</span>
+        <span>Covers <strong>2017/2018 Rain Semester Exam</strong>, <strong>2016/2017 Test</strong>, and <strong>Exam Revision Notes</strong> (handwritten) — every question solved in full detail.</span>
       </div>
       <div id="solved-content"></div>
     </div>
@@ -1687,6 +1700,21 @@ body {
       <div class="results-list" id="results-list"></div>
     </div>
   </div>
+  <!-- ========== PEE 201 PETROLEUM GEOLOGY ========== -->
+  <div id="pee201" class="section-page">
+    <div class="page-header">
+      <div class="label" style="color:var(--accent-5)">Bonus Section</div>
+      <h1>PEE 201 – Petroleum Geology</h1>
+      <p>FUTO School of Engineering & Engineering Technology — Harmattan Semester 2024/2025. Course Code: PEE 201. Click any question to expand the answer.</p>
+    </div>
+    <div class="content-area">
+      <div class="info-banner" style="background:#ffa65715;border-color:#ffa65733">
+        <span class="info-icon">🛢️</span>
+        <span>This section covers the <strong>PEE 201 Petroleum Geology</strong> exam paper from FUTO's School of Engineering. Answers 5 questions only.</span>
+      </div>
+      <div id="pee-content"></div>
+    </div>
+  </div>
 
 </main>
 
@@ -1710,11 +1738,10 @@ function showSection(id) {
     document.getElementById('quiz').classList.remove('active');
   }
 
-  // Update sidebar active
+  // Update sidebar active — match by onclick attribute
   document.querySelectorAll('.nav-item').forEach(n => {
-    if (n.getAttribute('onclick') && n.getAttribute('onclick').includes(id)) {
-      n.classList.add('active');
-    }
+    const oc = n.getAttribute('onclick') || '';
+    if (oc.includes(`'${id}'`)) n.classList.add('active');
   });
 
   window.scrollTo(0, 0);
@@ -1910,6 +1937,105 @@ const notesData = [
       'The null space (kernel) of a matrix is a vector subspace.',
       'Rank-Nullity theorem: rank(A) + nullity(A) = number of columns of A',
       'To verify basis: show vectors span the space AND are linearly independent.',
+    ]
+  },
+  {
+    num: '11',
+    title: 'Composite Functions',
+    category: 'Functions & Algebra',
+    explanation: 'A composite function is formed when one function is applied after another. Given \\(f\\) and \\(g\\), the composite \\(f \\circ g(x) = f(g(x))\\) means first apply \\(g\\), then apply \\(f\\) to the result. The order matters: \\(f \\circ g \\neq g \\circ f\\) in general.',
+    formulas: [
+      '\\((f \\circ g)(x) = f(g(x))\\) — apply g first, then f',
+      '\\((g \\circ f)(x) = g(f(x))\\) — apply f first, then g',
+      '\\((f \\circ f)(x) = f(f(x))\\) — apply f twice (iterated composition)',
+      'Example: If \\(f(x) = 2x+3\\) and \\(g(x) = 3x\\), then \\(g\\circ f(2) = g(f(2)) = g(7) = 21\\)',
+      'And \\(f \\circ f(x) = f(2x+3) = 2(2x+3)+3 = 4x+9\\)',
+      'And \\(g \\circ g(x) = g(3x) = 3(3x) = 9x\\)',
+    ],
+    keypoints: [
+      'Always evaluate the inner function first.',
+      'The domain of \\(f \\circ g\\) must include all x where g(x) is in the domain of f.',
+      'In general, \\(f \\circ g \\neq g \\circ f\\) (composition is NOT commutative).',
+      'If f(x) = 3x²−x+10 and g(x) = 1−20x, then fog(5): first find g(5)=−99, then f(−99).',
+      'fog(x) = f(g(x)) = 3(1−20x)² − (1−20x) + 10 = 1200x² − 100x + 12',
+    ]
+  },
+  {
+    num: '12',
+    title: 'Logarithms & Log Laws',
+    category: 'Functions & Algebra',
+    explanation: 'A logarithm answers the question: to what power must the base be raised to produce a given number? \\(\\log_a x = y \\Leftrightarrow a^y = x\\). Log laws allow us to simplify and solve logarithmic equations by converting multiplication/division to addition/subtraction.',
+    formulas: [
+      'Power law: \\(\\log_a x^n = n\\log_a x\\)',
+      'Product law: \\(\\log_a(xy) = \\log_a x + \\log_a y\\)',
+      'Quotient law: \\(\\log_a\\left(\\dfrac{x}{y}\\right) = \\log_a x - \\log_a y\\)',
+      'Change of base: \\(\\log_a x = \\dfrac{\\ln x}{\\ln a}\\)',
+      'Special values: \\(\\log_a a = 1\\), \\(\\log_a 1 = 0\\)',
+      'If \\(\\log_a M = \\log_a N\\), then \\(M = N\\)',
+    ],
+    keypoints: [
+      'Apply the power law FIRST before applying product/quotient laws.',
+      'To solve a log equation, isolate the log expression, then convert to exponential form.',
+      'Example: \\(5\\log_a y - 2\\log_a(x+4) = 2\\log_a y + \\log_a x\\)<br>→ \\(\\log_a y^5 - \\log_a(x+4)^2 = \\log_a y^2 + \\log_a x\\)<br>→ \\(y^3 = x(x+4)^2 \\Rightarrow y = \\sqrt[3]{x(x+4)^2}\\)',
+      'Natural log: \\(\\ln x = \\log_e x\\)',
+    ]
+  },
+  {
+    num: '13',
+    title: 'Factorization of Polynomials',
+    category: 'Algebra',
+    explanation: 'Factorization is the process of expressing a polynomial as a product of simpler polynomials. For a quadratic \\(ax^2+bx+c\\), we check the discriminant \\(b^2-4ac\\) to determine if it has two real simple factors. A perfect square discriminant means two rational factors exist.',
+    formulas: [
+      'Discriminant: \\(\\Delta = b^2 - 4ac\\)',
+      'If \\(\\Delta\\) is a perfect square → two simple rational factors',
+      'If \\(\\Delta > 0\\) but not perfect square → two irrational factors',
+      'If \\(\\Delta < 0\\) → no real factors (complex roots)',
+      'Difference of squares: \\(a^2 - b^2 = (a+b)(a-b)\\)',
+      'Factor by grouping: \\(x^3-6x^2y-2xy+12y^2 = x^2(x-6y)-2y(x-6y) = (x^2-2y)(x-6y)\\)',
+    ],
+    keypoints: [
+      '\\(4x^2+3x-4\\): \\(\\Delta = 9+64 = 73\\) — not a perfect square, no two simple factors.',
+      '\\(3x^2+x-4\\): \\(\\Delta = 1+48 = 49 = 7^2\\) — perfect square, factors exist: \\((x-1)(3x+4)\\).',
+      'For cubic expressions, try grouping terms two-by-two.',
+      '\\((x-2y)^2-(2x-y)^2 = [(x-2y)-(2x-y)][(x-2y)+(2x-y)] = (-x-y)(3x-3y) = -3(x+y)(x-y)\\)',
+    ]
+  },
+  {
+    num: '14',
+    title: 'Coordinate Geometry',
+    category: 'Geometry',
+    explanation: 'Coordinate geometry connects algebra and geometry by placing geometric shapes on a coordinate plane. Key ideas include the slope (gradient) of a line, the equation of a line, and finding intersection points. The gradient m = (y₂−y₁)/(x₂−x₁) measures steepness.',
+    formulas: [
+      'Gradient: \\(m = \\dfrac{y_2 - y_1}{x_2 - x_1}\\)',
+      'Equation of line: \\(y - y_1 = m(x - x_1)\\)',
+      'Slope-intercept: \\(y = mx + c\\)',
+      'Parallel lines have equal gradients; perpendicular lines have gradients \\(m_1 \\cdot m_2 = -1\\)',
+      'Distance: \\(d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}\\)',
+    ],
+    keypoints: [
+      'Through (3,4) and (5,8): m = (8-4)/(5-3) = 2; equation: y = 2x − 2.',
+      'P(4,0) and Q(7,3): m = (3-0)/(7-4) = 1.',
+      'P(5,6) and Q(9,2): m = (2-6)/(9-5) = −1.',
+      'P(−4,−7) and Q(1,3): m = (3+7)/(1+4) = 2.',
+      'For point on y=3x²−7x+12 where gradient = −1: dy/dx = 6x−7 = −1 → x=1, y=8.',
+    ]
+  },
+  {
+    num: '15',
+    title: 'Applications of Partial Derivatives',
+    category: 'Calculus',
+    explanation: 'Partial derivatives have powerful real-world applications in engineering. The total differential approximates how a quantity changes when multiple variables change simultaneously. Engineering uses this to find how changes in voltage, resistance, or current affect an electric circuit.',
+    formulas: [
+      'Total differential: \\(\\delta z = \\dfrac{\\partial z}{\\partial x}\\delta x + \\dfrac{\\partial z}{\\partial y}\\delta y + \\dfrac{\\partial z}{\\partial z}\\delta z\\)',
+      'For \\(I = V/R\\): \\(\\delta I = \\dfrac{\\partial I}{\\partial V}\\delta V + \\dfrac{\\partial I}{\\partial R}\\delta R = \\dfrac{1}{R}\\delta V - \\dfrac{V}{R^2}\\delta R\\)',
+      'Rate of variation of position vector: \\(\\dfrac{d\\vec{r}}{dt} = \\dfrac{dr_x}{dt}\\hat{i} + \\dfrac{dr_y}{dt}\\hat{j}\\)',
+      'Percentage change: use total differential then divide by original quantity',
+    ],
+    keypoints: [
+      'The total differential is used for error analysis and small change approximations.',
+      'For I=V/R with V=250V, R=50Ω, δV=1V, δR=0.5Ω: δI = 1/50 − 250×0.5/2500 = 0.02−0.05 = −0.03A.',
+      'Position vector r(t) = (1−t²)i + (1+2t)j gives dr/dt = −2ti + 2j.',
+      'For y = 4ws³/d⁴: use percentage changes in w, s, d to find percentage change in y.',
     ]
   },
   {
@@ -2465,6 +2591,228 @@ From \\(R_1\\): \\(x_1 + 2(3) + (-4) = 4 \\Rightarrow x_1 = 2\\)`
       { title: 'Final Answer', content: '\\[x_1 = 2,\\quad x_2 = 3,\\quad x_3 = -4\\]', isFinal: true }
     ]
   },
+  // ===== EXAM REVISION QUESTIONS (from handwritten notes) =====
+  {
+    id: 'ER1',
+    year: 'Exam Revision Notes',
+    question: 'Find the directional derivative of \\(f(x,y) = x^3 - 3xy + 4y^2\\) in the direction of the angle \\(\\theta = \\dfrac{\\pi}{6}\\) at the point \\((1, 2)\\).',
+    steps: [
+      { title: 'Set Up the Formula', content: '\\[D_{\\hat{u}}f = \\nabla f \\cdot \\hat{u} = \\nabla f \\cdot (\\cos\\theta\\,\\hat{i} + \\sin\\theta\\,\\hat{j})\\]' },
+      { title: 'Find Partial Derivatives', content: '\\[\\frac{\\partial f}{\\partial x} = 3x^2 - 3y, \\quad \\frac{\\partial f}{\\partial y} = -3x + 8y\\]' },
+      { title: 'Evaluate at (1, 2)', content: '\\[\\frac{\\partial f}{\\partial x}(1,2) = 3(1)^2 - 3(2) = 3 - 6 = -3\\]\\[\\frac{\\partial f}{\\partial y}(1,2) = -3(1) + 8(2) = -3 + 16 = 13\\]\\[\\nabla f = -3\\hat{i} + 13\\hat{j}\\]' },
+      { title: 'Compute Directional Derivative at θ = π/6', content: '\\[D_{\\hat{u}}f = (-3\\hat{i}+13\\hat{j})\\cdot\\left(\\cos\\frac{\\pi}{6}\\hat{i} + \\sin\\frac{\\pi}{6}\\hat{j}\\right)\\]\\[= -3\\cdot\\frac{\\sqrt{3}}{2} + 13\\cdot\\frac{1}{2} = \\frac{-3\\sqrt{3} + 13}{2}\\]' },
+      { title: 'Final Answer', content: '\\[D_{\\hat{u}}f = \\dfrac{13 - 3\\sqrt{3}}{2}\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER2',
+    year: 'Exam Revision Notes',
+    question: 'Find the directional derivative of \\(f(x,y) = xe^{xy}+y\\) in the direction \\(\\theta = \\dfrac{2\\pi}{3}\\).',
+    steps: [
+      { title: 'Find Partial Derivatives', content: '\\[\\frac{\\partial f}{\\partial x} = e^{xy} + x(ye^{xy}) = e^{xy}(1+xy)\\quad\\text{(product rule)}\\]\\[\\frac{\\partial f}{\\partial y} = x^2e^{xy} + 1\\]' },
+      { title: 'Form the Gradient', content: '\\[\\nabla f = e^{xy}(1+xy)\\,\\hat{i} + (x^2e^{xy}+1)\\,\\hat{j}\\]' },
+      { title: 'Direction Vector at θ = 2π/3', content: '\\[\\hat{u} = \\cos\\frac{2\\pi}{3}\\hat{i} + \\sin\\frac{2\\pi}{3}\\hat{j} = -\\frac{1}{2}\\hat{i} + \\frac{\\sqrt{3}}{2}\\hat{j}\\]' },
+      { title: 'Final Answer', content: '\\[D_{\\hat{u}}f = \\nabla f \\cdot \\hat{u} = -\\frac{1}{2}(xe^{xy}+e^{xy}xy) + \\frac{\\sqrt{3}}{2}(x^2e^{xy}+1)\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER3',
+    year: 'Exam Revision Notes',
+    question: 'Given position vector \\(\\vec{r}(t) = (1-t^2)\\hat{i} + (1+2t)\\hat{j}\\), determine the rate of variation with respect to time \\(t\\).',
+    steps: [
+      { title: 'Identify Components', content: '\\(r_x = 1-t^2\\) and \\(r_y = 1+2t\\).' },
+      { title: 'Differentiate Each Component', content: '\\[\\frac{dr_x}{dt} = \\frac{d}{dt}(1-t^2) = -2t\\]\\[\\frac{dr_y}{dt} = \\frac{d}{dt}(1+2t) = 2\\]' },
+      { title: 'Final Answer', content: '\\[\\frac{d\\vec{r}}{dt} = -2t\\,\\hat{i} + 2\\hat{j}\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER4',
+    year: 'Exam Revision Notes',
+    question: 'Determine the gradient of scalar quantity \\(\\phi = xy^2z^2\\) which is the magnitude of vector \\(\\vec{A} = A_x\\hat{i}+A_y\\hat{j}+A_z\\hat{k}\\).',
+    steps: [
+      { title: 'Formula for Gradient', content: '\\[\\nabla\\phi = \\frac{\\partial\\phi}{\\partial x}\\hat{i} + \\frac{\\partial\\phi}{\\partial y}\\hat{j} + \\frac{\\partial\\phi}{\\partial z}\\hat{k}\\]' },
+      { title: 'Compute Each Partial Derivative', content: '\\[\\frac{\\partial\\phi}{\\partial x} = y^2z^2,\\quad \\frac{\\partial\\phi}{\\partial y} = 2xyz^2,\\quad \\frac{\\partial\\phi}{\\partial z} = 2xy^2z\\]' },
+      { title: 'Final Answer', content: '\\[\\nabla\\phi = y^2z^2\\,\\hat{i} + 2xyz^2\\,\\hat{j} + 2xy^2z\\,\\hat{k}\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER5',
+    year: 'Exam Revision Notes',
+    question: 'Given \\(f(x) = 3x^2-x+10\\) and \\(g(x) = 1-20x\\), find: (i) \\(f\\circ g(x)\\), (ii) \\(f\\circ g(5)\\), (iii) \\(g\\circ f(x)\\).',
+    steps: [
+      { title: 'Find f∘g(x)', content: '\\[f\\circ g(x) = f(g(x)) = f(1-20x)\\]\\[= 3(1-20x)^2 - (1-20x) + 10\\]\\[= 3(1-40x+400x^2) - 1+20x+10\\]\\[= 3-120x+1200x^2 - 1+20x+10\\]\\[= 1200x^2 - 100x + 12\\]' },
+      { title: 'Find f∘g(5)', content: '\\[f\\circ g(5) = 1200(25) - 100(5) + 12 = 30000 - 500 + 12 = \\mathbf{29512}\\]' },
+      { title: 'Find g∘f(x)', content: '\\[g\\circ f(x) = g(f(x)) = g(3x^2-x+10)\\]\\[= 1 - 20(3x^2-x+10) = 1 - 60x^2 + 20x - 200\\]\\[= -60x^2 + 20x - 199\\]' },
+      { title: 'Final Answers', content: '(i) \\(f\\circ g(x) = 1200x^2 - 100x + 12\\)<br>(ii) \\(f\\circ g(5) = 29512\\)<br>(iii) \\(g\\circ f(x) = -60x^2 + 20x - 199\\)', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER6',
+    year: 'Exam Revision Notes',
+    question: 'Given matrices \\(A = \\begin{pmatrix}2&1&3\\\\1&-2&4\\\\0&4&5\\end{pmatrix}\\) and \\(B = \\begin{pmatrix}2&3&4\\\\-1&2&0\\\\3&1&2\\end{pmatrix}\\), show that \\(AB \\neq BA\\).',
+    steps: [
+      { title: 'Compute AB', content: '\\[AB = \\begin{pmatrix}2(2)+1(-1)+3(3) & 2(3)+1(2)+3(1) & 2(4)+1(0)+3(2)\\\\1(2)+(-2)(-1)+4(3) & 1(3)+(-2)(2)+4(1) & 1(4)+(-2)(0)+4(2)\\\\0(2)+4(-1)+5(3) & 0(3)+4(2)+5(1) & 0(4)+4(0)+5(2)\\end{pmatrix}\\]\\[= \\begin{pmatrix}12&11&14\\\\16&3&12\\\\11&13&10\\end{pmatrix}\\]' },
+      { title: 'Compute BA', content: '\\[BA = \\begin{pmatrix}7&12&38\\\\0&-5&5\\\\7&7&23\\end{pmatrix}\\]' },
+      { title: 'Final Answer', content: 'Since \\(AB = \\begin{pmatrix}12&11&14\\\\16&3&12\\\\11&13&10\\end{pmatrix} \\neq \\begin{pmatrix}7&12&38\\\\0&-5&5\\\\7&7&23\\end{pmatrix} = BA\\),<br>we conclude \\(AB \\neq BA\\). Matrix multiplication is NOT commutative.', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER7',
+    year: 'Exam Revision Notes',
+    question: 'Find \\(r\\) such that \\(\\vec{u} = 8\\hat{i}-2\\hat{j}+4\\hat{k}\\) and \\(\\vec{v} = \\hat{i}+5\\hat{j}+r\\hat{k}\\) are <strong>parallel</strong> vectors.',
+    steps: [
+      { title: 'Condition for Parallel Vectors', content: 'Two vectors are parallel if their cross product is zero: \\(\\vec{u} \\times \\vec{v} = \\vec{0}\\). Equivalently, their components are proportional: \\(\\dfrac{u_1}{v_1} = \\dfrac{u_2}{v_2} = \\dfrac{u_3}{v_3}\\).' },
+      { title: 'Set Up Proportionality', content: '\\[\\frac{8}{1} = \\frac{-2}{5} = \\frac{4}{r}\\]The first two ratios are NOT equal (8 ≠ −0.4), so we use the cross product approach instead.' },
+      { title: 'Use Cross Product = 0', content: '\\[\\vec{u}\\times\\vec{v} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\8&-2&4\\\\1&5&r\\end{vmatrix}\\]\\[= \\hat{i}(-2r-20) - \\hat{j}(8r-4) + \\hat{k}(40+2)\\]Setting each component to zero:<br>\\(-2r - 20 = 0 \\Rightarrow r = -10\\)<br>Check \\(\\hat{j}\\) component: \\(-(8(-10)-4) = -(-84) = 84 \\neq 0\\)<br>The vectors are not truly parallel for any real r — they are not parallel vectors unless the direction ratios are exactly proportional.' },
+      { title: 'Final Answer', content: 'The vectors \\(\\vec{u}\\) and \\(\\vec{v}\\) cannot be made parallel by any real value of \\(r\\), since \\(8/1 \\neq -2/5\\). If the question asks for orthogonality: \\(\\vec{u}\\cdot\\vec{v} = 8-10+4r=0 \\Rightarrow r = 1/2\\).', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER8',
+    year: 'Exam Revision Notes',
+    question: "Solve the system using Cramer's rule: \\(5x-4y+3z=6\\), \\(2x+3y-z=5\\), \\(x+y+z=6\\).",
+    steps: [
+      { title: 'Coefficient Matrix and Constants', content: '\\[A = \\begin{pmatrix}5&-4&3\\\\2&3&-1\\\\1&1&1\\end{pmatrix},\\quad \\vec{b} = \\begin{pmatrix}6\\\\5\\\\6\\end{pmatrix}\\]' },
+      { title: 'Compute Δ₀ = det(A)', content: '\\[\\Delta_0 = 5(3+1)+4(2+1)+3(2-3) = 5(4)+4(3)+3(-1) = 20+12-3 = 29\\]' },
+      { title: 'Compute Δx', content: '\\[\\Delta_x = \\begin{vmatrix}6&-4&3\\\\5&3&-1\\\\6&1&1\\end{vmatrix} = 6(3+1)+4(5+6)+3(5-18) = 24+44-39 = 29\\]' },
+      { title: 'Compute Δy and Δz', content: '\\[\\Delta_y = \\begin{vmatrix}5&6&3\\\\2&5&-1\\\\1&6&1\\end{vmatrix} = 5(5+6)-6(2+1)+3(12-5) = 55-18+21 = 58\\]\\[\\Delta_z = \\begin{vmatrix}5&-4&6\\\\2&3&5\\\\1&1&6\\end{vmatrix} = 5(18-5)+4(12-5)+6(2-3) = 65+28-6 = 87\\]' },
+      { title: 'Final Answer', content: '\\[x = \\frac{\\Delta_x}{\\Delta_0} = \\frac{29}{29} = 1,\\quad y = \\frac{\\Delta_y}{\\Delta_0} = \\frac{58}{29} = 2,\\quad z = \\frac{\\Delta_z}{\\Delta_0} = \\frac{87}{29} = 3\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER9',
+    year: 'Exam Revision Notes',
+    question: 'Find the inverse of \\(A = \\begin{pmatrix}3&-3&4\\\\2&-3&4\\\\0&-1&1\\end{pmatrix}\\) using the cofactor/adjoint method.',
+    steps: [
+      { title: 'Compute det(A)', content: '\\[|A| = 3(-3+4)+3(2-0)+4(-2-0) = 3(1)+3(2)+4(-2) = 3+6-8 = 1\\]' },
+      { title: 'Find Cofactors', content: '\\(C_{11} = +\\begin{vmatrix}-3&4\\\\-1&1\\end{vmatrix} = -3+4 = 1\\)<br>\\(C_{12} = -\\begin{vmatrix}2&4\\\\0&1\\end{vmatrix} = -(2-0) = -2\\)<br>\\(C_{13} = +\\begin{vmatrix}2&-3\\\\0&-1\\end{vmatrix} = -2-0 = -2\\)<br>\\(C_{21} = -\\begin{vmatrix}-3&4\\\\-1&1\\end{vmatrix} = -(-3+4) = -1\\)<br>\\(C_{22} = +\\begin{vmatrix}3&4\\\\0&1\\end{vmatrix} = 3-0 = 3\\)<br>\\(C_{23} = -\\begin{vmatrix}3&-3\\\\0&-1\\end{vmatrix} = -(-3-0) = 3\\)<br>\\(C_{31} = +\\begin{vmatrix}-3&4\\\\-3&4\\end{vmatrix} = -12+12 = 0\\)<br>\\(C_{32} = -\\begin{vmatrix}3&4\\\\2&4\\end{vmatrix} = -(12-8) = -4\\)<br>\\(C_{33} = +\\begin{vmatrix}3&-3\\\\2&-3\\end{vmatrix} = -9+6 = -3\\)' },
+      { title: 'Form Cofactor Matrix and Transpose', content: '\\[C = \\begin{pmatrix}1&-2&-2\\\\-1&3&3\\\\0&-4&-3\\end{pmatrix},\\quad C^T = \\begin{pmatrix}1&-1&0\\\\-2&3&-4\\\\-2&3&-3\\end{pmatrix}\\]' },
+      { title: 'Final Answer', content: 'Since \\(|A|=1\\):\\[A^{-1} = \\frac{1}{1}\\cdot C^T = \\begin{pmatrix}1&-1&0\\\\-2&3&-4\\\\-2&3&-3\\end{pmatrix}\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER10',
+    year: 'Exam Revision Notes',
+    question: 'Find \\(\\alpha\\) for which matrix \\(Q = \\begin{pmatrix}1&\\alpha&1\\\\\\alpha&1&1\\\\2&3&-1\\end{pmatrix}\\) is singular.',
+    steps: [
+      { title: 'Condition for Singular Matrix', content: 'A matrix is singular when its determinant equals zero: \\(|Q| = 0\\).' },
+      { title: 'Expand the Determinant', content: '\\[|Q| = 1\\begin{vmatrix}1&1\\\\3&-1\\end{vmatrix} - \\alpha\\begin{vmatrix}\\alpha&1\\\\2&-1\\end{vmatrix} + 1\\begin{vmatrix}\\alpha&1\\\\2&3\\end{vmatrix}\\]\\[= 1(-1-3) - \\alpha(-\\alpha-2) + 1(3\\alpha-2)\\]\\[= -4 + \\alpha^2 + 2\\alpha + 3\\alpha - 2\\]\\[= \\alpha^2 + 5\\alpha - 6\\]' },
+      { title: 'Solve α² + 5α − 6 = 0', content: '\\[(\\alpha+6)(\\alpha-1) = 0\\]\\[\\alpha = -6 \\quad\\text{or}\\quad \\alpha = 1\\]' },
+      { title: 'Final Answer', content: '\\[\\alpha = -6 \\quad \\text{or} \\quad \\alpha = 1\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER11',
+    year: 'Exam Revision Notes',
+    question: 'Solve the ODE: \\(\\dfrac{dy}{dx} = \\dfrac{y^2 + xy^2}{x^2y - x^2}\\)',
+    steps: [
+      { title: 'Factor Both Numerator and Denominator', content: '\\[\\frac{dy}{dx} = \\frac{y^2(1+x)}{x^2(y-1)}\\]This is a separable equation.' },
+      { title: 'Separate Variables', content: '\\[(y-1)\\,dy = \\frac{y^2(1+x)}{x^2}\\cdot\\frac{dx}{y-1}\\cdot(y-1)\\]Wait — re-separate:<br>\\[x^2(y-1)\\,dy = y^2(1+x)\\,dx\\]\\[\\frac{y-1}{y^2}dy = \\frac{1+x}{x^2}dx\\]\\[\\left(\\frac{1}{y} - \\frac{1}{y^2}\\right)dy = \\left(\\frac{1}{x^2} + \\frac{1}{x}\\right)dx\\]' },
+      { title: 'Integrate Both Sides', content: '\\[\\int\\left(\\frac{1}{y} - y^{-2}\\right)dy = \\int\\left(x^{-2} + \\frac{1}{x}\\right)dx\\]\\[\\ln y + y^{-1} = -x^{-1} + \\ln x + C\\]' },
+      { title: 'Final Answer', content: '\\[\\ln y + \\frac{1}{y} = \\ln x - \\frac{1}{x} + C\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER12',
+    year: 'Exam Revision Notes',
+    question: 'An engineering system is given as \\(x\\dfrac{dy}{dx} + y = x^3\\). Obtain the solution at \\(y(2) = 5\\).',
+    steps: [
+      { title: 'Rewrite in Standard Form', content: 'Divide through by x:\\[\\frac{dy}{dx} + \\frac{1}{x}y = x^2\\]Here \\(P(x) = 1/x\\) and \\(Q(x) = x^2\\).' },
+      { title: 'Find Integrating Factor', content: '\\[\\mu(x) = e^{\\int \\frac{1}{x}dx} = e^{\\ln x} = x\\]' },
+      { title: 'Multiply Through and Integrate', content: '\\[y \\cdot \\mu = \\int Q(x)\\cdot\\mu\\,dx = \\int x^2 \\cdot x\\,dx = \\int x^3\\,dx = \\frac{x^4}{4} + C\\]\\[xy = \\frac{x^4}{4} + C\\]' },
+      { title: 'Apply Initial Condition y(2) = 5', content: '\\[2(5) = \\frac{2^4}{4} + C \\Rightarrow 10 = 4 + C \\Rightarrow C = 6\\]' },
+      { title: 'Final Answer', content: '\\[xy = \\frac{x^4}{4} + 6\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER13',
+    year: 'Exam Revision Notes',
+    question: 'Solve: \\(\\dfrac{dy}{dx} + y\\cot x = \\cos x\\) with initial condition \\(y\\left(\\dfrac{\\pi}{2}\\right) = 5\\).',
+    steps: [
+      { title: 'Identify P(x) and Q(x)', content: '\\(P(x) = \\cot x = \\dfrac{\\cos x}{\\sin x}\\), \\(Q(x) = \\cos x\\)' },
+      { title: 'Find Integrating Factor', content: '\\[\\mu(x) = e^{\\int \\cot x\\,dx} = e^{\\ln|\\sin x|} = \\sin x\\]<br>NB: We use \\(\\int \\frac{f\'(x)}{f(x)}dx = \\ln|f(x)|\\)' },
+      { title: 'Write Solution Form', content: '\\[y\\cdot\\sin x = \\int \\cos x \\cdot \\sin x\\,dx\\]Using the product law: \\(\\int f\'(x)f(x)dx = \\dfrac{[f(x)]^2}{2}\\):\\[y\\cdot\\sin x = \\frac{\\sin^2 x}{2} + C\\]' },
+      { title: 'Apply IC: y(π/2) = 5', content: '\\[5\\sin\\frac{\\pi}{2} = \\frac{\\sin^2(\\pi/2)}{2} + C\\]\\[5(1) = \\frac{1}{2} + C \\Rightarrow C = \\frac{9}{2}\\]' },
+      { title: 'Final Answer', content: '\\[y\\sin x = \\frac{\\sin^2 x}{2} + \\frac{9}{2}\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER14',
+    year: 'Exam Revision Notes',
+    question: 'Find y in terms of x if: \\(5\\log_a y - 2\\log_a(x+4) = 2\\log_a y + \\log_a x\\)',
+    steps: [
+      { title: 'Apply Power Law', content: '\\[\\log_a y^5 - \\log_a(x+4)^2 = \\log_a y^2 + \\log_a x\\]' },
+      { title: 'Collect Like Terms', content: '\\[\\log_a y^5 - \\log_a y^2 = \\log_a x + \\log_a(x+4)^2\\]\\[\\log_a y^3 = \\log_a\\left[x(x+4)^2\\right]\\]' },
+      { title: 'Remove Logarithms', content: '\\[y^3 = x(x+4)^2\\]' },
+      { title: 'Final Answer', content: '\\[y = \\sqrt[3]{x(x+4)^2}\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER15',
+    year: 'Exam Revision Notes',
+    question: 'Find y in terms of x if: \\(2\\log_a y - 3\\log_a x^2 = \\log_a \\sqrt{y} + \\log_a x\\)',
+    steps: [
+      { title: 'Apply Power Law', content: '\\[\\log_a y^2 - \\log_a x^6 = \\log_a y^{1/2} + \\log_a x\\]' },
+      { title: 'Collect Log y and Log x Terms', content: '\\[\\log_a y^2 - \\log_a y^{1/2} = \\log_a x + \\log_a x^6\\]\\[\\log_a y^{3/2} = \\log_a x^7\\]' },
+      { title: 'Remove Logarithms and Solve for y', content: '\\[y^{3/2} = x^7 \\Rightarrow y^{3/2 \\cdot 2/3} = x^{7 \\cdot 2/3}\\]\\[y = x^{14/3}\\]' },
+      { title: 'Final Answer', content: '\\[y = \\sqrt[3]{x^{14}}\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER16',
+    year: 'Exam Revision Notes',
+    question: 'Find the quotient when \\(12x^3 - 2x^2 - 3x + 28\\) is divided by \\(3x + 4\\) using long division.',
+    steps: [
+      { title: 'Set Up Long Division', content: '\\[\\frac{12x^3-2x^2-3x+28}{3x+4}\\]' },
+      { title: 'First Division Step', content: '\\(12x^3 \\div 3x = 4x^2\\). Multiply back: \\(4x^2(3x+4) = 12x^3+16x^2\\).<br>Subtract: \\((12x^3-2x^2) - (12x^3+16x^2) = -18x^2\\)' },
+      { title: 'Second Division Step', content: '\\(-18x^2 \\div 3x = -6x\\). Multiply: \\(-6x(3x+4) = -18x^2-24x\\).<br>Subtract: \\((-18x^2-3x) - (-18x^2-24x) = 21x\\)' },
+      { title: 'Third Division Step', content: '\\(21x \\div 3x = 7\\). Multiply: \\(7(3x+4) = 21x+28\\).<br>Subtract: \\((21x+28)-(21x+28) = 0\\)' },
+      { title: 'Final Answer', content: 'The quotient is \\(\\boxed{4x^2 - 6x + 7}\\) with remainder 0.', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER17',
+    year: 'Exam Revision Notes',
+    question: 'Find the equation of the line passing through \\((3, 4)\\) and \\((5, 8)\\).',
+    steps: [
+      { title: 'Find the Gradient (Slope)', content: '\\[m = \\frac{y_2-y_1}{x_2-x_1} = \\frac{8-4}{5-3} = \\frac{4}{2} = 2\\]' },
+      { title: 'Use Point-Slope Form', content: '\\[y - y_1 = m(x - x_1)\\]\\[y - 4 = 2(x-3) = 2x - 6\\]' },
+      { title: 'Final Answer', content: '\\[y = 2x - 2\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER18',
+    year: 'Exam Revision Notes',
+    question: 'Determine the coordinates of a point on \\(y = 3x^2 - 7x + 12\\) where the gradient is \\(-1\\).',
+    steps: [
+      { title: 'Differentiate to Get Gradient Function', content: '\\[\\frac{dy}{dx} = 6x - 7\\]' },
+      { title: 'Set Gradient Equal to −1', content: '\\[6x - 7 = -1 \\Rightarrow 6x = 6 \\Rightarrow x = 1\\]' },
+      { title: 'Find y at x = 1', content: '\\[y = 3(1)^2 - 7(1) + 12 = 3 - 7 + 12 = 8\\]' },
+      { title: 'Final Answer', content: 'The coordinates are \\(\\boxed{(1, 8)}\\).', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER19',
+    year: 'Exam Revision Notes',
+    question: 'Solve the ODE: \\(\\dfrac{dy}{dx} = (1+x)(1+y)\\)',
+    steps: [
+      { title: 'Identify as Separable', content: 'The equation can be written as a product of a function of x and a function of y.' },
+      { title: 'Separate Variables', content: '\\[\\frac{dy}{1+y} = (1+x)\\,dx\\]' },
+      { title: 'Integrate Both Sides', content: '\\[\\int\\frac{1}{1+y}dy = \\int(1+x)dx\\]\\[\\ln|1+y| = x + \\frac{x^2}{2} + C\\]' },
+      { title: 'Final Answer', content: '\\[\\ln(1+y) = x + \\frac{x^2}{2} + C\\]', isFinal: true }
+    ]
+  },
+  {
+    id: 'ER20',
+    year: 'Exam Revision Notes',
+    question: 'An engineering system has current \\(I = V/R\\). If V=250V, R=50Ω, find the change in current δI when V increases by 1V and R increases by 0.5Ω.',
+    steps: [
+      { title: 'Use Total Differential', content: '\\[\\delta I = \\frac{\\partial I}{\\partial V}\\delta V + \\frac{\\partial I}{\\partial R}\\delta R\\]' },
+      { title: 'Find Partial Derivatives', content: '\\[\\frac{\\partial I}{\\partial V} = \\frac{1}{R}, \\quad \\frac{\\partial I}{\\partial R} = -\\frac{V}{R^2}\\]' },
+      { title: 'Substitute Values', content: '\\[\\delta I = \\frac{1}{50}(1) - \\frac{250}{(50)^2}(0.5) = \\frac{1}{50} - \\frac{250 \\times 0.5}{2500} = 0.02 - 0.05\\]' },
+      { title: 'Final Answer', content: '\\[\\delta I = -0.03\\,\\text{A}\\]<br>The current <strong>decreases by 0.03 A</strong>.', isFinal: true }
+    ]
+  },
   {
     id: 'T3',
     year: '2016/2017 Test',
@@ -2639,6 +2987,46 @@ const questionBank = [
   { question: "The quotient rule: \\(\\frac{d}{dx}\\left[\\frac{u}{v}\\right]\\) equals:", options: ["\\(\\frac{u'v-uv'}{v^2}\\)","\\(\\frac{u'v+uv'}{v^2}\\)","\\(\\frac{u'}{v'}\\)","\\(\\frac{u'v-uv'}{v}\\)"], answer: "\\(\\frac{u'v-uv'}{v^2}\\)", explanation: "Quotient rule: \"lo d-hi minus hi d-lo over lo squared\"", difficulty: "beginner" },
   { question: "What does it mean for X to be a basis for V = \\(\\mathbb{R}^3\\)?", options: ["X spans \\(\\mathbb{R}^3\\) and is linearly independent","X has exactly 3 vectors","X spans \\(\\mathbb{R}^3\\) only","X is linearly independent only"], answer: "X spans \\(\\mathbb{R}^3\\) and is linearly independent", explanation: "A basis must satisfy both: spanning the space and linear independence.", difficulty: "intermediate" },
   { question: "For the system \\(Ax=b\\), if \\(\\text{rank}(A) < \\text{rank}([A|b])\\), then:", options: ["No solution","Unique solution","Infinite solutions","System is consistent"], answer: "No solution", explanation: "If rank of augmented matrix exceeds rank of A, the system is inconsistent.", difficulty: "advanced" },
+
+  // ===== NEW: COMPOSITE FUNCTIONS =====
+  { question: "If \\(f(x)=2x+3\\) and \\(g(x)=3x\\), find \\(g\\circ f(2)\\).", options: ["21","14","9","27"], answer: "21", explanation: "f(2)=2(2)+3=7; g(f(2))=g(7)=3(7)=21", difficulty: "beginner" },
+  { question: "If \\(f(x) = 2x+3\\), find \\(f\\circ f(x)\\).", options: ["\\(4x+9\\)","\\(4x+3\\)","\\(6x+3\\)","\\(2x+9\\)"], answer: "\\(4x+9\\)", explanation: "f(f(x))=f(2x+3)=2(2x+3)+3=4x+6+3=4x+9", difficulty: "beginner" },
+  { question: "If \\(g(x)=3x\\), find \\(g\\circ g(x)\\).", options: ["\\(9x\\)","\\(6x\\)","\\(3x^2\\)","\\(x\\)"], answer: "\\(9x\\)", explanation: "g(g(x))=g(3x)=3(3x)=9x", difficulty: "beginner" },
+  { question: "If \\(f(x)=3x^2-x+10\\) and \\(g(x)=1-20x\\), find \\(f\\circ g(x)\\).", options: ["\\(1200x^2-100x+12\\)","\\(-60x^2+20x-199\\)","\\(3x^2-20x+10\\)","\\(60x^2-100x\\)"], answer: "\\(1200x^2-100x+12\\)", explanation: "f(g(x))=3(1-20x)²-(1-20x)+10=3(1-40x+400x²)-1+20x+10=1200x²-100x+12", difficulty: "advanced" },
+  { question: "If \\(f(x)=3x^2-x+10\\) and \\(g(x)=1-20x\\), find \\(g\\circ f(x)\\).", options: ["\\(-60x^2+20x-199\\)","\\(1200x^2-100x+12\\)","\\(20x^2-x\\)","\\(3-x\\)"], answer: "\\(-60x^2+20x-199\\)", explanation: "g(f(x))=1-20(3x²-x+10)=1-60x²+20x-200=-60x²+20x-199", difficulty: "advanced" },
+  { question: "\\(f\\circ g(5)\\) when \\(f(x)=3x^2-x+10\\), \\(g(x)=1-20x\\):", options: ["29512","12","−99","1200"], answer: "29512", explanation: "g(5)=1-100=-99; f(-99)=3(9801)-(-99)+10=29403+99+10=29512", difficulty: "advanced" },
+
+  // ===== NEW: LOGARITHMS =====
+  { question: "Using log laws, \\(\\log_a x^n\\) equals:", options: ["\\(n\\log_a x\\)","\\(\\log_a nx\\)","\\(x^n\\)","\\(n/\\log_a x\\)"], answer: "\\(n\\log_a x\\)", explanation: "Power law of logarithms: the exponent comes down as a coefficient.", difficulty: "beginner" },
+  { question: "\\(\\log_a x + \\log_a y\\) equals:", options: ["\\(\\log_a(xy)\\)","\\(\\log_a(x+y)\\)","\\(\\log_a(x/y)\\)","\\(xy\\)"], answer: "\\(\\log_a(xy)\\)", explanation: "Product law: log(x)+log(y)=log(xy) for the same base.", difficulty: "beginner" },
+  { question: "If \\(\\log_a y^3 = \\log_a x(x+4)^2\\), then y equals:", options: ["\\(\\sqrt[3]{x(x+4)^2}\\)","\\(x(x+4)\\)","\\((x+4)^{2/3}\\)","\\(x^{1/3}(x+4)\\)"], answer: "\\(\\sqrt[3]{x(x+4)^2}\\)", explanation: "Since log_a M = log_a N → M = N, so y³ = x(x+4)², giving y = ∛[x(x+4)²]", difficulty: "intermediate" },
+  { question: "If \\(y^{3/2} = x^7\\), then y equals:", options: ["\\(x^{14/3}\\)","\\(x^{7/2}\\)","\\(x^{21}\\)","\\(x^{7/3}\\)"], answer: "\\(x^{14/3}\\)", explanation: "y = (x^7)^{2/3} = x^{14/3}", difficulty: "intermediate" },
+
+  // ===== NEW: FACTORIZATION =====
+  { question: "The discriminant of \\(4x^2+3x-4\\) is:", options: ["73","−55","25","49"], answer: "73", explanation: "Δ = b²-4ac = 9-4(4)(-4) = 9+64 = 73. Not a perfect square, so no two simple factors.", difficulty: "beginner" },
+  { question: "The discriminant of \\(3x^2+x-4\\) is:", options: ["49","25","73","−47"], answer: "49", explanation: "Δ = 1-4(3)(-4) = 1+48 = 49 = 7². Perfect square → two simple rational factors.", difficulty: "beginner" },
+  { question: "Factorize \\(3x^2+x-4\\):", options: ["\\((x-1)(3x+4)\\)","\\((x+1)(3x-4)\\)","\\((x-4)(3x+1)\\)","\\((3x-1)(x+4)\\)"], answer: "\\((x-1)(3x+4)\\)", explanation: "3x²+x-4: looking for factors of -12 that add to 1: 4 and -3. → (x-1)(3x+4). Check: 3x²+4x-3x-4=3x²+x-4 ✓", difficulty: "intermediate" },
+  { question: "\\(x^3-6x^2y-2xy+12y^2\\) factorizes to:", options: ["\\((x^2-2y)(x-6y)\\)","\\((x-2y)(x^2-6y)\\)","\\((x+2y)(x-6y)\\)","\\(x^2(x-6y-2y)\\)"], answer: "\\((x^2-2y)(x-6y)\\)", explanation: "Group: x²(x-6y)-2y(x-6y)=(x²-2y)(x-6y)", difficulty: "advanced" },
+
+  // ===== NEW: COORDINATE GEOMETRY =====
+  { question: "The gradient of a line through (3,4) and (5,8) is:", options: ["2","4","−2","1/2"], answer: "2", explanation: "m = (8-4)/(5-3) = 4/2 = 2", difficulty: "beginner" },
+  { question: "The equation of line through (3,4) with gradient 2 is:", options: ["\\(y=2x-2\\)","\\(y=2x+4\\)","\\(y=2x-4\\)","\\(y=x-2\\)"], answer: "\\(y=2x-2\\)", explanation: "y-4=2(x-3) → y=2x-6+4=2x-2", difficulty: "beginner" },
+  { question: "Gradient of line joining P(4,0) and Q(7,3) is:", options: ["1","3","1/3","−1"], answer: "1", explanation: "m=(3-0)/(7-4)=3/3=1", difficulty: "beginner" },
+  { question: "Gradient of line joining P(5,6) and Q(9,2) is:", options: ["−1","1","2","−2"], answer: "−1", explanation: "m=(2-6)/(9-5)=-4/4=-1", difficulty: "beginner" },
+  { question: "The point on \\(y=3x^2-7x+12\\) where the gradient is −1 is:", options: ["(1,8)","(2,10)","(0,12)","(3,12)"], answer: "(1,8)", explanation: "dy/dx=6x-7=-1 → x=1. y=3-7+12=8. Point: (1,8)", difficulty: "intermediate" },
+
+  // ===== NEW: ODE =====
+  { question: "For \\(dy/dx = (y^2+xy^2)/(x^2y-x^2)\\) after separating variables, the correct separated form is:", options: ["\\(\\frac{y-1}{y^2}dy = \\frac{1+x}{x^2}dx\\)","\\(y dy = x dx\\)","\\(\\frac{1}{y}dy = \\frac{1}{x}dx\\)","\\((y-1)dy=(1+x)dx\\)"], answer: "\\(\\frac{y-1}{y^2}dy = \\frac{1+x}{x^2}dx\\)", explanation: "Factor: dy/dx = y²(1+x)/[x²(y-1)]. Separate: (y-1)/y² dy = (1+x)/x² dx", difficulty: "advanced" },
+  { question: "The integrating factor for \\(x\\dfrac{dy}{dx}+y=x^3\\) is:", options: ["\\(x\\)","\\(e^x\\)","\\(1/x\\)","\\(x^2\\)"], answer: "\\(x\\)", explanation: "Rewrite: dy/dx + (1/x)y = x². P(x)=1/x, μ = e^∫(1/x)dx = e^(ln x) = x", difficulty: "intermediate" },
+  { question: "Particular solution of \\(xy=x^4/4+C\\) at \\(y(2)=5\\) gives C =", options: ["6","4","10","2"], answer: "6", explanation: "2(5) = 16/4 + C → 10 = 4+C → C=6", difficulty: "intermediate" },
+  { question: "The integrating factor for \\(dy/dx + y\\cot x = \\cos x\\) is:", options: ["\\(\\sin x\\)","\\(\\cos x\\)","\\(\\tan x\\)","\\(e^{\\cot x}\\)"], answer: "\\(\\sin x\\)", explanation: "μ = e^∫cot x dx = e^(ln|sin x|) = sin x", difficulty: "intermediate" },
+  { question: "After solving \\(dy/dx = (1+x)(1+y)\\), the general solution is:", options: ["\\(\\ln(1+y) = x + x^2/2 + C\\)","\\(y = x+x^2/2+C\\)","\\(\\ln y = x+C\\)","\\(y = Ce^x\\)"], answer: "\\(\\ln(1+y) = x + x^2/2 + C\\)", explanation: "Separate: dy/(1+y) = (1+x)dx. Integrate: ln(1+y) = x+x²/2+C", difficulty: "intermediate" },
+
+  // ===== NEW: DIRECTIONAL DERIVATIVES =====
+  { question: "The directional derivative \\(D_{\\hat{u}}f\\) at a point is computed as:", options: ["\\(\\nabla f \\cdot \\hat{u}\\)","\\(\\nabla f \\times \\hat{u}\\)","\\(|\\nabla f|\\)","\\(\\nabla^2 f\\)"], answer: "\\(\\nabla f \\cdot \\hat{u}\\)", explanation: "The directional derivative equals the dot product of the gradient and the unit direction vector.", difficulty: "beginner" },
+  { question: "For \\(f(x,y)=x^3-3xy+4y^2\\) at (1,2), \\(\\partial f/\\partial x\\) = ?", options: ["−3","3","13","−13"], answer: "−3", explanation: "∂f/∂x = 3x²-3y. At (1,2): 3(1)-3(2)=3-6=-3", difficulty: "intermediate" },
+  { question: "For \\(f(x,y)=x^3-3xy+4y^2\\) at (1,2), \\(\\partial f/\\partial y\\) = ?", options: ["13","−3","11","8"], answer: "13", explanation: "∂f/∂y = -3x+8y. At (1,2): -3+16=13", difficulty: "intermediate" },
+  { question: "The unit direction vector for \\(\\theta = \\pi/6\\) is:", options: ["\\((\\sqrt{3}/2, 1/2)\\)","\\((1/2, \\sqrt{3}/2)\\)","\\((1, 0)\\)","\\((\\sqrt{2}/2, \\sqrt{2}/2)\\)"], answer: "\\((\\sqrt{3}/2, 1/2)\\)", explanation: "cos(π/6)=√3/2, sin(π/6)=1/2. Unit vector = (cos θ, sin θ)", difficulty: "intermediate" },
 ];
 
 /* ============================================================
@@ -2938,6 +3326,168 @@ function submitQuiz() {
 }
 
 /* ============================================================
+   PEE 201 — PETROLEUM GEOLOGY DATA & RENDER
+   ============================================================ */
+const peeQuestions = [
+  {
+    id: 'Q1', marks: '14 marks',
+    question: '(a) Define effective porosity and total porosity. (b) A reservoir of 30% porosity has 15% water saturation and 25% gas saturation. Find (i) gas porosity (ii) water porosity (iii) oil porosity. (c) A cylindrical core sample has diameter 24mm and length 32mm. Dry weight = 41.250g. Saturated with water (density 1 g/cm³), second weight = 43.165g. Find the porosity.',
+    answer: `<div class="concept-block">
+<h4>📖 (a) Definitions</h4>
+<p><strong>Total Porosity (ϕt):</strong> The total fraction of rock volume that is pore space, including all void spaces whether connected or not.<br>
+<strong>Effective Porosity (ϕe):</strong> The fraction of rock volume made up of interconnected pore spaces through which fluids can actually flow. ϕe ≤ ϕt always.</p>
+
+<h4>📐 (b) Porosity Calculations</h4>
+<p>Given: Total porosity ϕ = 30% = 0.30, S<sub>w</sub> = 15%, S<sub>g</sub> = 25%<br>
+Note: S<sub>o</sub> = 1 − S<sub>w</sub> − S<sub>g</sub> = 1 − 0.15 − 0.25 = 0.60 (60% oil saturation)</p>
+<div class="formula-box">
+(i) Gas porosity = ϕ × S<sub>g</sub> = 0.30 × 0.25 = 0.075 = <strong>7.5%</strong><br>
+(ii) Water porosity = ϕ × S<sub>w</sub> = 0.30 × 0.15 = 0.045 = <strong>4.5%</strong><br>
+(iii) Oil porosity = ϕ × S<sub>o</sub> = 0.30 × 0.60 = 0.18 = <strong>18%</strong>
+</div>
+
+<h4>📐 (c) Core Sample Porosity</h4>
+<p>Diameter d = 24mm = 2.4cm, Length L = 32mm = 3.2cm<br>
+Volume of cylinder = π(d/2)²L = π(1.2)²(3.2) = π × 1.44 × 3.2 ≈ 14.476 cm³<br>
+Weight of water absorbed = 43.165 − 41.250 = 1.915 g<br>
+Volume of pores = mass/density = 1.915/1 = 1.915 cm³</p>
+<div class="formula-box">Porosity = Vₚ/Vt = 1.915/14.476 ≈ <strong>0.1323 = 13.23%</strong></div>
+</div>`
+  },
+  {
+    id: 'Q2', marks: '14 marks',
+    question: '(a) What do you understand by water saturation of hydrocarbon bearing reservoir sand? (b) How does saturation of any fluid in a reservoir affect production? (c) An oil well is producing in a circular reservoir of 20 acres surface area. Calculate the pressure in the well P_w given: r_w=6in, P_e=5000psia, h=10ft, k=75md, μ=5cp and Q=175bbl/day.',
+    answer: `<div class="concept-block">
+<h4>📖 (a) Water Saturation in Hydrocarbon Reservoirs</h4>
+<p>Water saturation (S<sub>w</sub>) is the fraction of the pore volume of a reservoir rock that is occupied by water. In hydrocarbon-bearing reservoir sands, there is always irreducible (connate) water bound to the rock grains. This water is immobile and does not flow. S<sub>w</sub> = Volume of water / Total pore volume. A high S<sub>w</sub> means less space for hydrocarbons.</p>
+
+<h4>📖 (b) Effect of Fluid Saturation on Production</h4>
+<p>• If S<sub>w</sub> is high (above connate water saturation), water flows along with oil, reducing relative permeability to oil and lowering oil production rate.<br>
+• Gas saturation above critical gas saturation creates a free gas cap which drives oil production initially but can cause premature gas breakthrough.<br>
+• Oil saturation must exceed residual oil saturation for oil to flow.<br>
+• Relative permeability (k<sub>ro</sub>, k<sub>rw</sub>, k<sub>rg</sub>) depends on saturations and controls the fraction of each fluid that flows.</p>
+
+<h4>📐 (c) Darcy's Law for Radial Flow (Pressure Calculation)</h4>
+<p>Using Darcy's radial flow equation:</p>
+<div class="formula-box">Q = (0.00708 × k × h × (Pe − Pw)) / (μ × ln(re/rw))</div>
+<p>Converting: re from 20 acres: A = πre² → re = √(20×43560/π) ≈ 527 ft<br>
+r<sub>w</sub> = 6in = 0.5 ft, ln(527/0.5) = ln(1054) ≈ 6.96</p>
+<div class="formula-box">
+175 = (0.00708 × 75 × 10 × (5000 − Pw)) / (5 × 6.96)<br>
+175 × 34.8 = 5.31 × (5000 − Pw)<br>
+6090 = 5.31(5000 − Pw)<br>
+5000 − Pw = 6090/5.31 ≈ 1147<br>
+Pw ≈ <strong>3853 psia</strong>
+</div>
+</div>`
+  },
+  {
+    id: 'Q3', marks: '14 marks',
+    question: '(a) Explain your understanding of subsurface geologic mapping. (b) Subsurface geology is a tool in the discovery of unexplored hydrocarbon — Explain. (c) State any two important steps in preparing a subsurface map. (d) Carefully differentiate between exploration and exploitation as it relates to petroleum geology, identifying the activities in each.',
+    answer: `<div class="concept-block">
+<h4>📖 (a) Subsurface Geologic Mapping</h4>
+<p>Subsurface geologic mapping is the process of creating representations of geological formations below the earth's surface using data from wells, seismic surveys, and other subsurface investigations. It depicts the spatial distribution, structure, and properties of rock formations beneath the ground without direct observation.</p>
+
+<h4>📖 (b) Subsurface Geology as a Hydrocarbon Discovery Tool</h4>
+<p>Subsurface geology helps in: (i) Identifying structural traps (anticlines, faults, domes) where hydrocarbons can accumulate; (ii) Mapping stratigraphic traps (unconformities, pinch-outs, reefs); (iii) Correlating well logs to understand subsurface lithology and stratigraphy; (iv) Predicting reservoir properties such as porosity, permeability, and fluid content; (v) Identifying source rocks that generated hydrocarbons and migration pathways.</p>
+
+<h4>📖 (c) Two Key Steps in Preparing a Subsurface Map</h4>
+<p><strong>Step 1 — Data Collection:</strong> Gather all available subsurface data including well logs (gamma ray, resistivity, sonic), seismic reflection data, core sample descriptions, and production data.<br>
+<strong>Step 2 — Data Correlation and Contouring:</strong> Correlate formation tops/depths across wells, then contour the formation depths or thicknesses to create structural or isopach maps.</p>
+
+<h4>📖 (d) Exploration vs Exploitation</h4>
+<p><strong>Exploration:</strong> Activities aimed at finding new oil and gas accumulations. Includes: geological surveys, seismic acquisition and interpretation, wildcat drilling, reservoir testing, and resource assessment.<br>
+<strong>Exploitation (Development):</strong> Activities aimed at producing from already-discovered reservoirs at optimal rates. Includes: development well drilling, production optimization, reservoir management, EOR (Enhanced Oil Recovery), and field depletion planning.</p>
+</div>`
+  },
+  {
+    id: 'Q4', marks: '14 marks',
+    question: '(a) State the philosophy of subsurface geology. (b) Briefly explain any two roles of a subsurface geologist. (c) Briefly discuss: (i) Data acquisition (ii) Data processing (iii) Data interpretation in seismic prospecting. (d) Explain the effect of computer revolution on geophysical field survey.',
+    answer: `<div class="concept-block">
+<h4>📖 (a) Philosophy of Subsurface Geology</h4>
+<p>The philosophy of subsurface geology is rooted in the principle that the subsurface cannot be observed directly, so indirect methods — using rocks, fluids, and geophysical signals sampled at or near the surface — must be used to infer what lies below. It involves integrating multiple datasets, applying geological principles (uniformitarianism, stratigraphy, structural geology), and using probabilistic reasoning to construct models of the subsurface.</p>
+
+<h4>📖 (b) Two Roles of a Subsurface Geologist</h4>
+<p><strong>1. Well Correlation:</strong> Matching and correlating stratigraphic markers, formation tops, and lithological units across multiple wells to build a 3D picture of the subsurface geology.<br>
+<strong>2. Reservoir Characterization:</strong> Using well data, seismic data, and core analysis to define the geometry, properties, and distribution of reservoir intervals — supporting reserve estimation and field development planning.</p>
+
+<h4>📖 (c) Seismic Prospecting Stages</h4>
+<p><strong>(i) Data Acquisition:</strong> Seismic energy (from explosives or vibroseis trucks) is transmitted into the earth. Reflected waves are recorded by geophones/hydrophones at the surface. Parameters include source interval, receiver spacing, and recording duration.</p>
+<p><strong>(ii) Data Processing:</strong> Raw seismic data is processed to remove noise, apply corrections (statics, NMO — Normal Moveout), stack traces, and migrate the data to produce a clear image of subsurface reflectors. Modern processing uses complex algorithms.</p>
+<p><strong>(iii) Data Interpretation:</strong> Processed seismic sections are interpreted by geoscientists to identify structural features (folds, faults), stratigraphic features (channels, clinoforms), and to predict rock properties (amplitude vs. offset analysis for fluid content).</p>
+
+<h4>📖 (d) Effect of Computer Revolution on Geophysical Surveys</h4>
+<p>The computer revolution transformed geophysics by: enabling processing of huge seismic datasets that would be impossible manually; allowing 3D and 4D seismic surveys; supporting sophisticated inversion algorithms to extract rock properties; enabling visualization in virtual 3D environments; automated picking of horizons and faults; machine learning applications for pattern recognition; real-time monitoring during surveys; and dramatically reducing exploration risk and cost.</p>
+</div>`
+  },
+  {
+    id: 'Q5', marks: '14 marks',
+    question: "(a) Describe two main types of formation that are key part of the Niger-Delta Petroleum System. (b) Briefly describe the physical and chemical properties of Niger-Delta Bonny Light Oil.",
+    answer: `<div class="concept-block">
+<h4>📖 (a) Two Key Formations of the Niger-Delta Petroleum System</h4>
+<p><strong>1. The Agbada Formation (Reservoir):</strong> This is the paralic (near-coastal) sequence of alternating sandstones and shales. The Agbada Formation serves as the main reservoir in the Niger Delta. The sandstones were deposited in fluvial, deltaic, barrier bar, and turbidite environments. They have good porosity (15–35%) and permeability, making them excellent reservoirs for oil and gas accumulation. Hydrocarbons migrated upward from the source rock into these sands and are trapped by overlying shale seals.</p>
+<p><strong>2. The Akata Formation (Source Rock):</strong> This is the marine shale sequence at the base of the Niger Delta stratigraphic column. The Akata Formation is the main source rock for Niger Delta hydrocarbons. It is composed of thick, organic-rich marine shales deposited in a deep marine environment. Burial and maturation of these shales generated oil and gas that subsequently migrated upward into Agbada sandstone reservoirs. It also has some deep-water turbidite sands that act as reservoirs.</p>
+
+<h4>📐 (b) Properties of Niger-Delta Bonny Light Oil</h4>
+<p><strong>Physical Properties:</strong><br>
+• API Gravity: approximately 33–36° API (light crude oil)<br>
+• Appearance: Light amber/golden brown color<br>
+• Low viscosity — flows easily at surface conditions<br>
+• Low wax and low sulfur content (sweet crude)<br>
+• Pour point: relatively low, indicating good flow at moderate temperatures<br>
+• Reid Vapor Pressure (RVP): moderate</p>
+<p><strong>Chemical Properties:</strong><br>
+• Sulfur content: <0.3% (sweet crude oil — highly valued)<br>
+• Paraffinic base with some naphthenic compounds<br>
+• Low asphaltene and resin content<br>
+• High proportion of valuable middle distillates (kerosene, diesel)<br>
+• Low heavy residue content, making it a premium refining feedstock<br>
+• Contains light hydrocarbons C₁–C₄ dissolved in solution</p>
+</div>`
+  },
+  {
+    id: 'Q6', marks: '14 marks',
+    question: "(a) Describe the Lake Chad Basin in terms of the predominant deposition. (b) Discuss two major challenges of the Lake Chad Basin.",
+    answer: `<div class="concept-block">
+<h4>📖 (a) Lake Chad Basin — Predominant Deposition</h4>
+<p>The Lake Chad Basin is an intracratonic sedimentary basin in central Africa, shared by Chad, Niger, Nigeria, and Cameroon. It is one of Africa's largest endorheic (closed drainage) basins with no outlet to the sea. The predominant depositional environments and settings include:</p>
+<p><strong>Continental/Lacustrine Deposition:</strong> Lake Chad and its predecessor lakes have deposited thick sequences of lacustrine (lake) sediments, including fine-grained sands, silts, clays, and diatomites. These represent ancient lake floor deposits accumulated over millions of years during wetter climatic periods.</p>
+<p><strong>Fluvial and Alluvial Deposition:</strong> Rivers (especially the Chari/Logone river system) deliver sediments into the basin. Floodplain deposits, point bar sands, and overbank clays are characteristic. During high stand periods, extensive deltaic deposits formed where rivers entered the ancient lake.</p>
+<p><strong>Aeolian (Wind) Deposits:</strong> During dry periods, wind-blown sands (dunes) are deposited in the northern arid parts of the basin. These form important aquifer zones.</p>
+<p><strong>Evaporitic Sequences:</strong> Evaporation in the shallow lake and marginal areas has led to precipitation of evaporite minerals (natron, trona) at various periods, indicating periods of basin desiccation.</p>
+<p>Hydrocarbon potential exists in the basin, with source rocks in deeper stratigraphic units and possible traps in structural and stratigraphic configurations.</p>
+
+<h4>📖 (b) Two Major Challenges of the Lake Chad Basin</h4>
+<p><strong>1. Severe Lake Shrinkage and Water Scarcity:</strong> Lake Chad has lost over 90% of its surface area since the 1960s due to climate change (reduced rainfall), increased human water withdrawals for irrigation, and population growth. This threatens the livelihoods of over 40 million people who depend on the lake and basin for water, food, and agriculture. Conflicts over dwindling water resources have increased sharply, contributing to regional insecurity.</p>
+<p><strong>2. Security and Insurgency:</strong> The Lake Chad Basin region has been severely affected by the Boko Haram insurgency and other armed groups that exploit the poverty and marginalization of communities affected by lake shrinkage. The instability has displaced millions of people, hindered development and resource exploitation (including petroleum exploration), and made humanitarian interventions difficult. The environmental stress and resource competition directly fuel conflict in the region.</p>
+</div>`
+  }
+];
+
+function renderPEE201() {
+  const container = document.getElementById('pee-content');
+  if (!container) return;
+  container.innerHTML = peeQuestions.map(q => `
+    <div class="question-solved-card" style="--card-accent:var(--accent-5)">
+      <div class="qs-header" onclick="toggleSolved(this)" style="gap:14px">
+        <span class="qs-num" style="background:linear-gradient(135deg,#ffa657,#e3853a)">${q.id}</span>
+        <h3 style="font-size:14px">${q.question.substring(0,160)}${q.question.length>160?'…':''}</h3>
+        <span style="color:var(--text-muted);font-size:11px;font-weight:600;flex-shrink:0">${q.marks}</span>
+        <span style="color:var(--text-muted);font-size:18px;flex-shrink:0;transition:transform 0.25s" class="qs-toggle">▼</span>
+      </div>
+      <div class="qs-body">
+        <div style="padding:8px 0 16px">
+          <div style="font-size:14px;color:var(--text-secondary);line-height:1.8;padding:12px 0 8px;border-bottom:1px solid var(--border);margin-bottom:16px">
+            <strong style="color:var(--text-primary)">Full Question:</strong> ${q.question}
+          </div>
+          ${q.answer}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ============================================================
    INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -2945,6 +3495,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFormulas();
   renderSolved();
   renderQBank();
+  renderPEE201();
   // Select mixed by default
   quizState.difficulty = 'mixed';
 });
